@@ -71,6 +71,8 @@ public class BTripController {
                     })
                     .collect(Collectors.toList());
 
+        System.out.println(bTrip);
+
             // Add the list to the model
             model.addAttribute("base64ImageList", base64ImageList);
 

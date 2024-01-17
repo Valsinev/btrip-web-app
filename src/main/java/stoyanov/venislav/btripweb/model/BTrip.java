@@ -1,6 +1,5 @@
 package stoyanov.venislav.btripweb.model;
 
-import lombok.Data;
 import lombok.Setter;
 import org.example.engine.BusinessTripForm;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
