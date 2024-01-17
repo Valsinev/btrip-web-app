@@ -69,7 +69,7 @@
 
                 #body-area-div{
                     width:100%;
-                    min-height:950px;
+                    min-height:990px;
                     border:2px solid white;
                 }
 
@@ -230,18 +230,18 @@
 
                 #hotel-panel-div{
                     width:100%
-                    min-height:300px;
+                    min-height:200px;
                 }
 
                 #month-panel-div{
                     width:100%
-                    min-height:300px;
+                    min-height:200px;
                 }
 
                  .hotel-panel-container {
                     position: relative;
                     width: 100%;
-                    min-height: 300px;
+                    min-height: 200px;
                 }
 
                 .hotel-box {
@@ -276,23 +276,12 @@
                     position: relative;
                     display: flex;
                     flex-direction: column;
-                    min-height: 1020px;
+                    min-height: 830px;
                 }
 
                 #btn{
                     width:100%;
-                    position: bottom;
-                    margin-top: 20px;
-                    padding: 20px;
-                    bottom:0px;
-                }
-
-
-                @media (max-width: 1000px) {
-                    #btn {
-                        margin-top: 30px;
-                        padding: 30px;
-                    }
+                    min-height: 100px;
                 }
 
                 .information-container {

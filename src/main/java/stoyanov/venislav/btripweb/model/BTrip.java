@@ -1,5 +1,6 @@
 package stoyanov.venislav.btripweb.model;
 
+import lombok.Data;
 import org.example.engine.BusinessTripForm;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
 
@@ -509,7 +510,7 @@ public class BTrip implements BusinessTripForm {
         this.additionalExpenses = additionalExpenses;
     }
 
-    public void setNightStayedInHotel(boolean nightStayedInHotel) {
+    public void setIsNightStayedInHotel(boolean nightStayedInHotel) {
         isNightStayedInHotel = nightStayedInHotel;
     }
 
@@ -521,15 +522,15 @@ public class BTrip implements BusinessTripForm {
         this.numberOfNightsStayed = numberOfNightsStayed;
     }
 
-    public void setTravelOnFirstDay(boolean travelOnFirstDay) {
+    public void setIsTravelOnFirstDay(boolean travelOnFirstDay) {
         isTravelOnFirstDay = travelOnFirstDay;
     }
 
-    public void setTravelOnLastDay(boolean travelOnLastDay) {
+    public void setIsTravelOnLastDay(boolean travelOnLastDay) {
         IsTravelOnLastDay = travelOnLastDay;
     }
 
-    public void setTravelWithYourVehicle(boolean travelWithYourVehicle) {
+    public void setIsTravelWithYourVehicle(boolean travelWithYourVehicle) {
         isTravelWithYourVehicle = travelWithYourVehicle;
     }
 
@@ -561,13 +562,14 @@ public class BTrip implements BusinessTripForm {
         this.fuelType = fuelType;
     }
 
-    public void setFromWhichDay(int fromWhichDay) {
+    public void setFromWhichDayField(int fromWhichDay) {
         this.fromWhichDayField = fromWhichDay;
     }
 
-    public void setToWichDay(int toWhichDay) {
+    public void setToWhichDayField(int toWhichDay) {
         this.toWhichDayField = toWhichDay;
     }
+
 
     public void setAddExpenses(String addExpenses) {
         this.additionalExpenses = addExpenses;

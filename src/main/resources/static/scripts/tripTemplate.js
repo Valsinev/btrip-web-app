@@ -1,35 +1,19 @@
 function validateBusinessTrip(event) {
 
-        var radio = document.getElementById("show-month-panel");
-
-        if (radio.checked) {
-
-            // Get the input field value
-            var numDaysInput = document.getElementById('numberOfDays');
-            var numDays = parseInt(numDaysInput.value);
-
-            // Get the selected checkboxes
-            var checkboxes = document.querySelectorAll('.day-box input[type="checkbox"]:checked');
-
-            // Check if the number of selected checkboxes matches the input value
-            if (checkboxes.length !== numDays) {
-                alert("Number of selected days must match the specified number of days.");
-                event.preventDefault(); // Prevent form submission
-            }
+    var radio = document.getElementById("show-month-panel");
+    if (radio.checked) {
+        // Get the input field value
+        var numDaysInput = document.getElementById('numberOfDays');
+        var numDays = parseInt(numDaysInput.value);
+        // Get the selected checkboxes
+        var checkboxes = document.querySelectorAll('.day-box input[type="checkbox"]:checked');
+        // Check if the number of selected checkboxes matches the input value
+        if (checkboxes.length !== numDays) {
+            alert("Number of selected days must match the specified number of days.");
+            event.preventDefault(); // Prevent form submission
         }
     }
-
-
-    modalImage.addEventListener('dblclick', function() {
-            // Example: Zoom in by changing the width and height
-            if (modalImage.style.width === "100%") {
-                modalImage.style.width = "50%";
-                modalImage.style.height = "110%";
-            } else {
-                modalImage.style.width = "100%";
-                modalImage.style.height = "100%";
-            }
-        });
+}
 
 
     function showHideNightStayPanelDiv(radio) {
@@ -51,15 +35,15 @@ function validateBusinessTrip(event) {
         function nightFieldsToggleRequired() {
             nightStayPrice.required = true;
             numberOfNights.required = true;
-            fromWitchDay.required = true;
-            toWitchDay.required = true;
+            fromWhichDayField.required = true;
+            toWhichDayField.required = true;
         }
 
         function nightFieldsNotRequired() {
             nightStayPrice.required = false;
             numberOfNights.required = false;
-            fromWitchDay.required = false;
-            toWitchDay.required = false;
+            fromWhichDayField.required = false;
+            toWhichDayField.required = false;
         }
 
 
@@ -133,19 +117,20 @@ function clearMonthPanelData() {
         function clearNightStayPanelData() {
             var nightStayPrice = document.getElementById('nightStayPrice');
             var numberOfNights = document.getElementById('numberOfNights');
-            var fromWitchDay = document.getElementById('fromWitchDay');
-            var toWitchDay = document.getElementById('toWitchDay');
+            var fromWhichDay = document.getElementById('fromWhichDayField');
+            var toWhichDay = document.getElementById('toWhichDayField');
             var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
             var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
 
             nightStayPrice.value = '';
             numberOfNights.value = '';
-            fromWitchDay.value = '';
-            toWitchDay.value = '';
+            fromWhichDay.value = '';
+            toWhichDay.value = '';
             isTravelOnFirstDay.checked = false;
             isTravelOnLastDay.checked = false;
         }
     }
+
 
 
     function showHideVehPanelDiv(radio) {
