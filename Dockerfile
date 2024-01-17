@@ -11,5 +11,5 @@ RUN ./gradlew build
 # Stage 2: Run Stage
 FROM openjdk:17-jdk
 EXPOSE 8080
-COPY --from=build /app/build/libs/b-trip-web-1.jar app.jar
+COPY --from=build /build/libs/b-trip-web-1.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
