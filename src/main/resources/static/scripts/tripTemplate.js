@@ -9,7 +9,7 @@ function validateBusinessTrip(event) {
         var checkboxes = document.querySelectorAll('.day-box input[type="checkbox"]:checked');
         // Check if the number of selected checkboxes matches the input value
         if (checkboxes.length !== numDays) {
-            alert("Number of selected days must match the specified number of days.");
+            alert("Броят дни не съответства на посочените!");
             event.preventDefault(); // Prevent form submission
         }
     }
