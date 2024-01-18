@@ -35,11 +35,11 @@ public class BTripController {
             // Handle validation exception
             model.addAttribute("exceptionMessage", ex.getMessage());
             model.addAttribute("stackTrace", ex.getStackTrace());
-            return "errorTemplate"; // Replace with your error page
+            return "errorTemplate";
         } catch (Exception e) {
             model.addAttribute("exceptionMessage", e.getMessage());
             model.addAttribute("stackTrace", e.getStackTrace());
-            return "errorTemplate"; // Replace with your error page
+            return "errorTemplate";
         }
 
         List<BufferedImage> imageList = new ArrayList<>();
