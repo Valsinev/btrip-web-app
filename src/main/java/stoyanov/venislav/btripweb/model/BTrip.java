@@ -1,12 +1,10 @@
 package stoyanov.venislav.btripweb.model;
 
-import lombok.Setter;
 import org.example.engine.BusinessTripForm;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
 
 import java.util.List;
 
-@Setter
 public class BTrip implements BusinessTripForm {
 
     private String fullName;
@@ -72,81 +70,6 @@ public class BTrip implements BusinessTripForm {
     private boolean day31;
 
     public BTrip() {
-    }
-
-    public BTrip(String fullName, String personalNumber, String position, int numberDocuments, String branchIn,
-                 String endDestination, String startDestination, int numberOfDays, String monthNumber, String whatYear,
-                 String reason, String headEmployeeName, String tripNumberThisMonth, String additionalExpenses,
-                 boolean isNightStayedInHotel, String nightStayPrice, String numberOfNightsStayed, boolean isTravelOnFirstDay,
-                 boolean isTravelOnLastDay, boolean isTravelWithYourVehicle, String makeAndModel, String category,
-                 String registrationNumber, String costBy100, String fuelPrice, String kilometers,
-                 String fuelType, int fromWhichDay, int toWhichDay, List<Integer> days, boolean day1,
-                 boolean day2, boolean day3, boolean day4, boolean day5, boolean day6, boolean day7, boolean day8,
-                 boolean day9, boolean day10, boolean day11, boolean day12, boolean day13, boolean day14, boolean day15,
-                 boolean day16, boolean day17, boolean day18, boolean day19, boolean day20, boolean day21, boolean day22,
-                 boolean day23, boolean day24, boolean day25, boolean day26, boolean day27, boolean day28, boolean day29,
-                 boolean day30, boolean day31) {
-        this.fullName = fullName;
-        this.personalNumber = personalNumber;
-        this.position = position;
-        this.numberDocuments = numberDocuments;
-        this.branchIn = branchIn;
-        this.endDestination = endDestination;
-        this.startDestination = startDestination;
-        this.numberOfDays = numberOfDays;
-        this.monthNumber = monthNumber;
-        this.whatYear = whatYear;
-        this.reason = reason;
-        this.headEmployeeName = headEmployeeName;
-        this.tripNumberThisMonth = tripNumberThisMonth;
-        this.additionalExpenses = additionalExpenses;
-        this.isNightStayedInHotel = isNightStayedInHotel;
-        this.nightStayPrice = nightStayPrice;
-        this.numberOfNightsStayed = numberOfNightsStayed;
-        this.isTravelOnFirstDay = isTravelOnFirstDay;
-        IsTravelOnLastDay = isTravelOnLastDay;
-        this.isTravelWithYourVehicle = isTravelWithYourVehicle;
-        this.makeAndModel = makeAndModel;
-        this.category = category;
-        this.registrationNumber = registrationNumber;
-        this.costBy100 = costBy100;
-        this.fuelPrice = fuelPrice;
-        this.kilometers = kilometers;
-        this.fuelType = fuelType;
-        this.fromWhichDayField = fromWhichDay;
-        this.toWhichDayField = toWhichDay;
-        this.days = days;
-        this.day1 = day1;
-        this.day2 = day2;
-        this.day3 = day3;
-        this.day4 = day4;
-        this.day5 = day5;
-        this.day6 = day6;
-        this.day7 = day7;
-        this.day8 = day8;
-        this.day9 = day9;
-        this.day10 = day10;
-        this.day11 = day11;
-        this.day12 = day12;
-        this.day13 = day13;
-        this.day14 = day14;
-        this.day15 = day15;
-        this.day16 = day16;
-        this.day17 = day17;
-        this.day18 = day18;
-        this.day19 = day19;
-        this.day20 = day20;
-        this.day21 = day21;
-        this.day22 = day22;
-        this.day23 = day23;
-        this.day24 = day24;
-        this.day25 = day25;
-        this.day26 = day26;
-        this.day27 = day27;
-        this.day28 = day28;
-        this.day29 = day29;
-        this.day30 = day30;
-        this.day31 = day31;
     }
 
     @Override
@@ -455,6 +378,249 @@ public class BTrip implements BusinessTripForm {
         return day31;
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setPersonalNumber(String personalNumber) {
+        this.personalNumber = personalNumber;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setNumberDocuments(int numberDocuments) {
+        this.numberDocuments = numberDocuments;
+    }
+
+    public void setBranchIn(String branchIn) {
+        this.branchIn = branchIn;
+    }
+
+    public void setEndDestination(String endDestination) {
+        this.endDestination = endDestination;
+    }
+
+    public void setStartDestination(String startDestination) {
+        this.startDestination = startDestination;
+    }
+
+    public void setNumberOfDays(int numberOfDays) {
+        this.numberOfDays = numberOfDays;
+    }
+
+    public void setMonthNumber(String monthNumber) {
+        this.monthNumber = monthNumber;
+    }
+
+    public void setWhatYear(String whatYear) {
+        this.whatYear = whatYear;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public void setHeadEmployeeName(String headEmployeeName) {
+        this.headEmployeeName = headEmployeeName;
+    }
+
+    public void setTripNumberThisMonth(String tripNumberThisMonth) {
+        this.tripNumberThisMonth = tripNumberThisMonth;
+    }
+
+    public void setAdditionalExpenses(String additionalExpenses) {
+        this.additionalExpenses = additionalExpenses;
+    }
+
+    public void setIsNightStayedInHotel(boolean nightStayedInHotel) {
+        isNightStayedInHotel = nightStayedInHotel;
+    }
+
+    public void setNightStayPrice(String nightStayPrice) {
+        this.nightStayPrice = nightStayPrice;
+    }
+
+    public void setNumberOfNightsStayed(String numberOfNightsStayed) {
+        this.numberOfNightsStayed = numberOfNightsStayed;
+    }
+
+    public void setIsTravelOnFirstDay(boolean travelOnFirstDay) {
+        isTravelOnFirstDay = travelOnFirstDay;
+    }
+
+    public void setIsTravelOnLastDay(boolean travelOnLastDay) {
+        IsTravelOnLastDay = travelOnLastDay;
+    }
+
+    public void setIsTravelWithYourVehicle(boolean travelWithYourVehicle) {
+        isTravelWithYourVehicle = travelWithYourVehicle;
+    }
+
+    public void setMakeAndModel(String makeAndModel) {
+        this.makeAndModel = makeAndModel;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public void setCostBy100(String costBy100) {
+        this.costBy100 = costBy100;
+    }
+
+    public void setFuelPrice(String fuelPrice) {
+        this.fuelPrice = fuelPrice;
+    }
+
+    public void setKilometers(String kilometers) {
+        this.kilometers = kilometers;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public void setFromWhichDayField(int fromWhichDayField) {
+        this.fromWhichDayField = fromWhichDayField;
+    }
+
+    public void setToWhichDayField(int toWhichDayField) {
+        this.toWhichDayField = toWhichDayField;
+    }
+
+    public void setDays(List<Integer> days) {
+        this.days = days;
+    }
+
+    public void setDay1(boolean day1) {
+        this.day1 = day1;
+    }
+
+    public void setDay2(boolean day2) {
+        this.day2 = day2;
+    }
+
+    public void setDay3(boolean day3) {
+        this.day3 = day3;
+    }
+
+    public void setDay4(boolean day4) {
+        this.day4 = day4;
+    }
+
+    public void setDay5(boolean day5) {
+        this.day5 = day5;
+    }
+
+    public void setDay6(boolean day6) {
+        this.day6 = day6;
+    }
+
+    public void setDay7(boolean day7) {
+        this.day7 = day7;
+    }
+
+    public void setDay8(boolean day8) {
+        this.day8 = day8;
+    }
+
+    public void setDay9(boolean day9) {
+        this.day9 = day9;
+    }
+
+    public void setDay10(boolean day10) {
+        this.day10 = day10;
+    }
+
+    public void setDay11(boolean day11) {
+        this.day11 = day11;
+    }
+
+    public void setDay12(boolean day12) {
+        this.day12 = day12;
+    }
+
+    public void setDay13(boolean day13) {
+        this.day13 = day13;
+    }
+
+    public void setDay14(boolean day14) {
+        this.day14 = day14;
+    }
+
+    public void setDay15(boolean day15) {
+        this.day15 = day15;
+    }
+
+    public void setDay16(boolean day16) {
+        this.day16 = day16;
+    }
+
+    public void setDay17(boolean day17) {
+        this.day17 = day17;
+    }
+
+    public void setDay18(boolean day18) {
+        this.day18 = day18;
+    }
+
+    public void setDay19(boolean day19) {
+        this.day19 = day19;
+    }
+
+    public void setDay20(boolean day20) {
+        this.day20 = day20;
+    }
+
+    public void setDay21(boolean day21) {
+        this.day21 = day21;
+    }
+
+    public void setDay22(boolean day22) {
+        this.day22 = day22;
+    }
+
+    public void setDay23(boolean day23) {
+        this.day23 = day23;
+    }
+
+    public void setDay24(boolean day24) {
+        this.day24 = day24;
+    }
+
+    public void setDay25(boolean day25) {
+        this.day25 = day25;
+    }
+
+    public void setDay26(boolean day26) {
+        this.day26 = day26;
+    }
+
+    public void setDay27(boolean day27) {
+        this.day27 = day27;
+    }
+
+    public void setDay28(boolean day28) {
+        this.day28 = day28;
+    }
+
+    public void setDay29(boolean day29) {
+        this.day29 = day29;
+    }
+
+    public void setDay30(boolean day30) {
+        this.day30 = day30;
+    }
+
+    public void setDay31(boolean day31) {
+        this.day31 = day31;
+    }
 
     public void setAddExpenses(String addExpenses) {
         this.additionalExpenses = addExpenses;

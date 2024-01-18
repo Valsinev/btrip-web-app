@@ -329,10 +329,10 @@
                                 <section id="vehicle-radio-div" class=" mb-3 box text-bg-secondary">
                                     <h3>Пътувахте Ли с Ваше Превозно Средство?</h3>
                                     <label for="isTravel">
-                                        <input type="radio" name="travelRadio" id="isTravel" value="showVehPanel" onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="true">
+                                        <input type="radio" name="travelRadio" id="isTravel" onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="true">
                                         Да</label>
                                     <label for="isNotTravel">
-                                        <input type="radio" name="travelRadio"  id="isNotTravel" value="hideVehPanel" onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="false">
+                                        <input type="radio" name="travelRadio"  id="isNotTravel"  onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="false">
                                         Не</label>
                                 </section>
 
@@ -368,7 +368,7 @@
                                     </div>
 
                                     <div id="veh-kilometers-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="kilometers" class="form-label">Километри:</label>
+                                        <label for="kilometers" class="form-label">Километри(общо):</label>
                                         <input type="number" th:field="*{kilometers}" class="form-control" id="kilometers">
                                     </div>
                                 </section>
