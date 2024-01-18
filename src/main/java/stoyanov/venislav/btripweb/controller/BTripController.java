@@ -36,6 +36,10 @@ public class BTripController {
             model.addAttribute("exceptionMessage", ex.getMessage());
             model.addAttribute("stackTrace", ex.getStackTrace());
             return "errorTemplate"; // Replace with your error page
+        } catch (Exception e) {
+            model.addAttribute("exceptionMessage", e.getMessage());
+            model.addAttribute("stackTrace", e.getStackTrace());
+            return "errorTemplate"; // Replace with your error page
         }
 
         List<BufferedImage> imageList = new ArrayList<>();
