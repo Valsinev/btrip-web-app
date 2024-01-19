@@ -29,18 +29,18 @@ public class BTripController {
 
     @PostMapping("/showImages")
     public String submitTrip(@ModelAttribute("bTrip") BTrip bTrip, Model model) {
-//        try {
-//            Validator.validateTrip(bTrip);
-//        } catch (ValidationException ex) {
-//            // Handle validation exception
-//            model.addAttribute("exceptionMessage", ex.getMessage());
-//            model.addAttribute("stackTrace", ex.getStackTrace());
-//            return "errorTemplate";
-//        } catch (Exception e) {
-//            model.addAttribute("exceptionMessage", e.getMessage());
-//            model.addAttribute("stackTrace", e.getStackTrace());
-//            return "errorTemplate";
-//        }
+        try {
+            Validator.validateTrip(bTrip);
+        } catch (ValidationException ex) {
+            // Handle validation exception
+            model.addAttribute("exceptionMessage", ex.getMessage());
+            model.addAttribute("stackTrace", ex.getStackTrace());
+            return "errorTemplate";
+        } catch (Exception e) {
+            model.addAttribute("exceptionMessage", e.getMessage());
+            model.addAttribute("stackTrace", e.getStackTrace());
+            return "errorTemplate";
+        }
 
         List<BufferedImage> imageList = new ArrayList<>();
         TripTypeSelector.select(bTrip, imageList);
