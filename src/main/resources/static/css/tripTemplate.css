@@ -70,7 +70,6 @@
                 #body-area-div{
                     width:100%;
                     min-height:990px;
-                    border:2px solid white;
                 }
 
                 #form-left-div{
@@ -185,7 +184,6 @@
                 .common-field-box {
                     width: 282px; /* Adjust the width as needed */
                     height: 120px; /* Adjust the height as needed */
-                    border: 2px solid white;
                 }
 
                 .hotel-fields-container {
@@ -195,6 +193,7 @@
                     grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
                     grid-gap: 10px; /* Adjust the gap between divs as needed */
                 }
+
                 .hotel-field-box {
                     width: 282px; /* Adjust the width as needed */
                     height: 120px; /* Adjust the height as needed */
