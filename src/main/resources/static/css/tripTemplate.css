@@ -76,6 +76,7 @@
                     width:79%;
                     height:800px;
                     float:left;
+                    border:2px solid white;
                 }
 
                 #form-right-div{
@@ -184,6 +185,7 @@
                 .common-field-box {
                     width: 282px; /* Adjust the width as needed */
                     height: 120px; /* Adjust the height as needed */
+                    border:2px solid white;
                 }
 
                 .hotel-fields-container {
