@@ -1,5 +1,8 @@
 package stoyanov.venislav.btripweb.model;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.example.engine.BusinessTripForm;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
 
@@ -14,15 +17,22 @@ public class BTrip implements BusinessTripForm {
     private String branchIn;
     private String endDestination;
     private String startDestination;
+
+    @Size(min = 1, max = 31, message = "невалиден брой дни.")
     private int numberOfDays;
+    @Size(min = 1, max = 12, message = "невалиден месец.")
     private String monthNumber;
     private String whatYear;
     private String reason;
     private String headEmployeeName;
+    @Size(min = 1, max = 31, message = "невалиден брой дни.")
     private String tripNumberThisMonth;
+    @Min(value = 0, message = "моля въведете положително число.")
     private String additionalExpenses;
     private boolean isNightStayedInHotel;
+    @Min(value = 0, message = "моля въведете положително число.")
     private String nightStayPrice;
+    @Size(min = 1, max = 31, message = "невалиден брой нощувки.")
     private String numberOfNightsStayed;
     private boolean isTravelOnFirstDay;
     private boolean IsTravelOnLastDay;
@@ -30,12 +40,18 @@ public class BTrip implements BusinessTripForm {
     private String makeAndModel;
     private String category;
     private String registrationNumber;
+    @Min(value = 1, message = "моля въведете положително число.")
     private String costBy100;
+    @Min(value = 1, message = "моля въведете положително число.")
     private String fuelPrice;
+    @Min(value = 1, message = "моля въведете положително число.")
     private String kilometers;
     private String fuelType;
+    @Size(min = 1, max = 31, message = "невалидна цифра за ден.")
     private int fromWhichDayField;
+    @Size(min = 1, max = 31, message = "невалидна цифра за ден.")
     private int toWhichDayField;
+    @NotNull(message = "грешка в избраните или брой дни.")
     private List<Integer> days;
     private boolean day1;
     private boolean day2;
