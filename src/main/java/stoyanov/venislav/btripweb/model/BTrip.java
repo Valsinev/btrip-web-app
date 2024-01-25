@@ -1,8 +1,12 @@
 package stoyanov.venislav.btripweb.model;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.example.engine.BusinessTripForm;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class BTrip implements BusinessTripForm {
@@ -14,28 +18,42 @@ public class BTrip implements BusinessTripForm {
     private String branchIn;
     private String endDestination;
     private String startDestination;
-    private int numberOfDays;
+
+    @Size(min = 1, max = 31, message = "невалиден брой дни.")
+    private BigDecimal numberOfDays;
+    @Size(min = 1, max = 12, message = "невалиден месец.")
     private String monthNumber;
     private String whatYear;
     private String reason;
     private String headEmployeeName;
+    @Size(min = 1, max = 31, message = "невалиден брой дни.")
     private String tripNumberThisMonth;
-    private String additionalExpenses;
+    @Min(value = 0, message = "моля въведете положително число.")
+    private BigDecimal additionalExpenses;
     private boolean isNightStayedInHotel;
-    private String nightStayPrice;
-    private String numberOfNightsStayed;
+    @Min(value = 0, message = "моля въведете положително число.")
+    private BigDecimal nightStayPrice;
+    @Size(min = 1, max = 31, message = "невалиден брой нощувки.")
+    private BigDecimal numberOfNightsStayed;
     private boolean isTravelOnFirstDay;
     private boolean IsTravelOnLastDay;
     private boolean isTravelWithYourVehicle;
-    private String makeAndModel;
+    private String model;
+    private String make;
     private String category;
     private String registrationNumber;
-    private String costBy100;
-    private String fuelPrice;
-    private String kilometers;
+    @Min(value = 1, message = "моля въведете положително число.")
+    private BigDecimal costBy100;
+    @Min(value = 1, message = "моля въведете положително число.")
+    private BigDecimal fuelPrice;
+    @Min(value = 1, message = "моля въведете положително число.")
+    private BigDecimal kilometers;
     private String fuelType;
+    @Size(min = 1, max = 31, message = "невалидна цифра за ден.")
     private int fromWhichDayField;
+    @Size(min = 1, max = 31, message = "невалидна цифра за ден.")
     private int toWhichDayField;
+    @NotNull(message = "грешка в избраните или брой дни.")
     private List<Integer> days;
     private boolean day1;
     private boolean day2;
@@ -108,7 +126,7 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
-    public int getNumberOfDays() {
+    public BigDecimal getNumberOfDays() {
         return numberOfDays;
     }
 
@@ -139,7 +157,7 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
-    public String getAdditionalExpenses() {
+    public BigDecimal getAdditionalExpenses() {
         return additionalExpenses;
     }
 
@@ -149,12 +167,12 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
-    public String getNightStayPrice() {
+    public BigDecimal getNightStayPrice() {
         return nightStayPrice;
     }
 
     @Override
-    public String getNumberOfNightsStayed() {
+    public BigDecimal getNumberOfNightsStayed() {
         return numberOfNightsStayed;
     }
 
@@ -174,8 +192,12 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
-    public String getMakeAndModel() {
-        return makeAndModel;
+    public String getMake() {
+        return make;
+    }
+    @Override
+    public String getModel() {
+        return model;
     }
 
     @Override
@@ -189,7 +211,7 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
-    public String getCostBy100() {
+    public BigDecimal getCostBy100() {
         return costBy100;
     }
 
@@ -199,12 +221,12 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
-    public String getFuelPrice() {
+    public BigDecimal getFuelPrice() {
         return fuelPrice;
     }
 
     @Override
-    public String getKilometers() {
+    public BigDecimal getKilometers() {
         return kilometers;
     }
 
@@ -406,7 +428,7 @@ public class BTrip implements BusinessTripForm {
         this.startDestination = startDestination;
     }
 
-    public void setNumberOfDays(int numberOfDays) {
+    public void setNumberOfDays(BigDecimal numberOfDays) {
         this.numberOfDays = numberOfDays;
     }
 
@@ -430,7 +452,7 @@ public class BTrip implements BusinessTripForm {
         this.tripNumberThisMonth = tripNumberThisMonth;
     }
 
-    public void setAdditionalExpenses(String additionalExpenses) {
+    public void setAdditionalExpenses(BigDecimal additionalExpenses) {
         this.additionalExpenses = additionalExpenses;
     }
 
@@ -438,11 +460,11 @@ public class BTrip implements BusinessTripForm {
         isNightStayedInHotel = nightStayedInHotel;
     }
 
-    public void setNightStayPrice(String nightStayPrice) {
+    public void setNightStayPrice(BigDecimal nightStayPrice) {
         this.nightStayPrice = nightStayPrice;
     }
 
-    public void setNumberOfNightsStayed(String numberOfNightsStayed) {
+    public void setNumberOfNightsStayed(BigDecimal numberOfNightsStayed) {
         this.numberOfNightsStayed = numberOfNightsStayed;
     }
 
@@ -458,8 +480,11 @@ public class BTrip implements BusinessTripForm {
         isTravelWithYourVehicle = travelWithYourVehicle;
     }
 
-    public void setMakeAndModel(String makeAndModel) {
-        this.makeAndModel = makeAndModel;
+    public void setMake(String make) {
+        this.make = make;
+    }
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public void setCategory(String category) {
@@ -470,15 +495,15 @@ public class BTrip implements BusinessTripForm {
         this.registrationNumber = registrationNumber;
     }
 
-    public void setCostBy100(String costBy100) {
+    public void setCostBy100(BigDecimal costBy100) {
         this.costBy100 = costBy100;
     }
 
-    public void setFuelPrice(String fuelPrice) {
+    public void setFuelPrice(BigDecimal fuelPrice) {
         this.fuelPrice = fuelPrice;
     }
 
-    public void setKilometers(String kilometers) {
+    public void setKilometers(BigDecimal kilometers) {
         this.kilometers = kilometers;
     }
 
@@ -622,7 +647,7 @@ public class BTrip implements BusinessTripForm {
         this.day31 = day31;
     }
 
-    public void setAddExpenses(String addExpenses) {
+    public void setAddExpenses(BigDecimal addExpenses) {
         this.additionalExpenses = addExpenses;
     }
 
@@ -649,7 +674,7 @@ public class BTrip implements BusinessTripForm {
                 ", isTravelOnFirstDay=" + isTravelOnFirstDay +
                 ", IsTravelOnLastDay=" + IsTravelOnLastDay +
                 ", isTravelWithYourVehicle=" + isTravelWithYourVehicle +
-                ", makeAndModel='" + makeAndModel + '\'' +
+                ", makeAndModel='" + make + " " + model + '\'' +
                 ", category='" + category + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", costBy100='" + costBy100 + '\'' +

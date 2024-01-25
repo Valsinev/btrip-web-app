@@ -1,7 +1,6 @@
 package stoyanov.venislav.btripweb.utill;
 
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
-import org.example.utillity.FieldValidator;
 import stoyanov.venislav.btripweb.model.BTrip;
 
 public class Validator {
