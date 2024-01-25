@@ -2,7 +2,6 @@ package stoyanov.venislav.btripweb.controller;
 import jakarta.validation.Valid;
 import org.example.engine.TripTypeSelector;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
-import org.example.utillity.FieldValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -31,13 +31,14 @@ public class BTripController {
     @PostMapping("/showImages")
     public String submitTrip(@Valid @ModelAttribute("bTrip") BTrip bTrip, Model model, BindingResult bindingResult) {
 
+        System.out.println(bindingResult.toString());
         //validation of model class fields
         if (bindingResult.hasErrors()) {
             return "tripTemplate";
         }
         //validation if checked days are equal to number of days
         bTrip.setDays(BTripGetDaysFromCheckboxesOrFields.getDays(bTrip));
-        if (bTrip.getDays().isEmpty() || bTrip.getDays().size() != bTrip.getNumberOfDays()) {
+        if (bTrip.getDays().isEmpty() || Objects.equals(bTrip.getDays().size(), bTrip.getNumberOfDays())) {
             return "tripTemplate";
         } else {
             //end the validation section
