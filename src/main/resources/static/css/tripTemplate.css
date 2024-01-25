@@ -73,14 +73,16 @@
                 }
 
                 #form-left-div{
-                    width:79%;
+                padding-left: 2%;
+                    padding-top: 1%;
+                    width:68%;
                     height:800px;
                     float:left;
                 }
 
                 #form-right-div{
-                    width:20%;
-                    height:800px;
+                    width:30%;
+                    min-height:1000px;
                     float:right;
                 }
 
@@ -89,7 +91,7 @@
                     min-height:500px;
                     margin-bottom:10px;
                     padding-left:10px;
-                    padding-top:10px;
+                    padding-top:2%;
                     padding-bottom:10px;
                     border:2px solid white;
                 }
@@ -97,7 +99,6 @@
                 #nightStay-div{
                     width:100%;
                     min-height:380px;
-                    padding-left:10px;
                 }
 
                 #vehicle-radio-div{
@@ -113,7 +114,9 @@
 
                 #vehicle-panel-div{
                     position: relative;
-                    width:100%;
+                    width:80%;
+                    padding-left: 10%;
+                    padding-right: 10%;
                     min-height:600px;
                     border:2px solid white;
                     display: none;
@@ -184,6 +187,8 @@
                 }
 
                  .common-fields-container {
+                 padding-left: 7%;
+                 padding-left: 2%;
                     display: flex;
                     flex-wrap: wrap;
                     max-width: 100%;
@@ -198,10 +203,12 @@
 
                 .hotel-fields-container {
                     display: flex;
+                    padding: 2%;
                     flex-wrap: wrap;
                     max-width: 100%;
                     grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
                     grid-gap: 10px; /* Adjust the gap between divs as needed */
+                    border:2px solid white;
                 }
 
                 .hotel-field-box {
@@ -233,6 +240,8 @@
                     width:100%;
                     min-height:80px;
                     margin-bottom:10px;
+                    padding-top:1%;
+                    padding-bottom:1%;
                     text-align: center;
                     border: 2px solid white;
                 }
@@ -266,7 +275,9 @@
                 .month-container {
                     width: 100%;
                     border: 2px solid white;
-                    padding: 20px;
+                    padding-left: 3%;
+                    padding-top: 4%;
+                    padding-bottom: 5%;
                     display: flex;
                     flex-wrap: wrap;
                 }
@@ -282,15 +293,16 @@
                 }
 
                 #buttonPlusVeh{
+                padding-left: 10%;
                     position: relative;
                     display: flex;
                     flex-direction: column;
-                    min-height: 830px;
+                    min-height: 980px;
                 }
 
                 #btn{
-                    width:100%;
-                    min-height: 100px;
+                    width:93%;
+                    min-height: 130px;
                 }
 
                 .information-container {
