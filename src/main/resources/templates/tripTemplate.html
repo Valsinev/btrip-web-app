@@ -55,13 +55,17 @@
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="year-div">
-                                        <label for="year" class="form-label"required pattern="[^1]\\d\\d\\d" title="Моля въведете валидна година.">Година:</label>
-                                        <input type="number" th:field="*{whatYear}" class="form-control" id="year" min="2023" required>
+                                        <label for="whatYear" class="form-label">Година:</label>
+                                        <select id="whatYear" name="year" th:field="*{whatYear}">
+                                            <option th:each="year : ${#numbers.sequence(2022, 2042)}" th:value="${year}" th:text="${year}"></option>
+                                        </select>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="month-div">
                                         <label for="monthNumber" class="form-label">Месец:</label>
-                                        <input type="number" th:field="*{monthNumber}" class="form-control" id="monthNumber" aria-describedby="emailHelp" min="1" max="12" required>
+                                        <select id="monthNumber" name="month" th:field="*{monthNumber}">
+                                            <option th:each="month : ${#numbers.sequence(1, 12)}" th:value="${month}" th:text="${month}"></option>
+                                        </select>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="start-city-div">
@@ -91,8 +95,9 @@
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="days-div">
                                         <label for="numberOfDays" class="form-label">За Колко Дни:</label>
-                                        <input type="number" th:field="*{numberOfDays}" class="form-control" id="numberOfDays" min="1"
-                                               max="31" step="1" required>
+                                        <select id="numberOfDays" name="day" th:field="*{numberOfDays}">
+                                            <option th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}" th:value="${day}" th:text="${day}"></option>
+                                        </select>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="add-expenses-div">
@@ -127,24 +132,24 @@
                                             </div>
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary p-3">
-                                                <label for="numberOfNights" class="form-label" id="numberOfNightsLabel">Брой Нощувки:</label>
-                                                <input type="number" th:field="*{numberOfNightsStayed}" class="form-control" id="numberOfNights" aria-describedby="emailHelp"
-                                                       min="0"
-                                                       max="31" step="1">
+                                                <label for="numberOfNightsStayed" class="form-label" id="numberOfNightsLabel">Брой Нощувки:</label>
+                                                <select id="numberOfNightsStayed" name="day" th:field="*{numberOfNightsStayed}">
+                                                    <option th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}" th:value="${day}" th:text="${day}"></option>
+                                                </select>
                                             </div>
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary p-3">
                                                 <label for="fromWhichDayField" class="form-label" >От кой Ден:</label>
-                                                <input type="number" th:field="*{fromWhichDayField}" class="form-control" id="fromWhichDayField" aria-describedby="emailHelp"
-                                                       min="0"
-                                                       max="31" step="1">
+                                                <select id="fromWhichDayField" name="day" th:field="*{fromWhichDayField}">
+                                                    <option th:each="day : ${#numbers.sequence(1, 31)}" th:value="${day}" th:text="${day}"></option>
+                                                </select>
                                             </div>
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary p-3">
                                                 <label for="toWhichDayField" class="form-label">До Кой Ден:</label>
-                                                <input type="number" th:field="*{toWhichDayField}" class="form-control" id="toWhichDayField" aria-describedby="emailHelp"
-                                                       min="0"
-                                                       max="31" step="1">
+                                                <select id="toWhichDayField" name="day" th:field="*{toWhichDayField}">
+                                                    <option th:each="day : ${#numbers.sequence(1, 31)}" th:value="${day}" th:text="${day}"></option>
+                                                </select>
                                             </div>
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary">
