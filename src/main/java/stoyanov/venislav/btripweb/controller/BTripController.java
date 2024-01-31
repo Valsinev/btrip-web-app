@@ -2,6 +2,7 @@ package stoyanov.venislav.btripweb.controller;
 import jakarta.validation.Valid;
 import org.example.engine.TripTypeSelector;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
+import org.example.utillity.FieldValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import stoyanov.venislav.btripweb.model.BTrip;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -38,6 +40,10 @@ public class BTripController {
         }
         //validation if checked days are equal to number of days
         bTrip.setDays(BTripGetDaysFromCheckboxesOrFields.getDays(bTrip));
+        //if selected days are different number than number of days
+        if (bTrip.getNumberOfDays().compareTo(BigDecimal.valueOf(bTrip.getDays().size())) != 0) {
+            return "tripTemplate";
+        }
         if (bTrip.getDays().isEmpty() || Objects.equals(bTrip.getDays().size(), bTrip.getNumberOfDays())) {
             return "tripTemplate";
         } else {
