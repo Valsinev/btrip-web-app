@@ -177,3 +177,51 @@ function clearMonthPanelData() {
     }
 
 
+        // Function to check if required fields are filled
+        function areRequiredFieldsFilled() {
+          var requiredFields = document.querySelectorAll('[required]');
+          for (var i = 0; i < requiredFields.length; i++) {
+            if (!requiredFields[i].value.trim()) {
+              return false;
+            }
+          }
+          return true;
+        }
+
+        // Function to disable form fields and show loading modal
+        function submitForm() {
+          // Check if required fields are filled
+          if (!areRequiredFieldsFilled()) {
+            // If not filled, display an alert or handle it as needed
+            alert('Моля попълнете всички задължителни полета. (*)');
+            return;
+          }
+
+          // Show loading modal
+          $('#loadingModal').modal('show');
+
+          // Manually submit the form using Ajax
+          $.ajax({
+            type: 'POST',
+            url: '/',
+            data: $('form').serialize(),
+            success: function (response) {
+              console.log(response);
+              // Redirect to the processed endpoint or perform any additional actions
+              window.location.href = '/processedTripTemplate';
+            },
+            error: function (error) {
+              console.error(error);
+              // Enable the form fields
+              $('form :input').prop('disabled', false);
+              // Hide the loading modal
+              $('#loadingModal').modal('hide');
+            }
+          });
+        }
+
+        // Attach the function to the form submission event
+        $('form').submit(function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          submitForm();
+        });

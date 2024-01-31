@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script th:src="@{/scripts/tripTemplate.js}"></script>
     <link rel="stylesheet" th:href="@{/css/tripTemplate.css}">
+
 </head>
 
 
@@ -79,7 +80,7 @@
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="trips-div">
-                                        <label for="tripNumberThisMonth" class="form-label">Командировки Този Месец:</label>
+                                        <label for="tripNumberThisMonth" class="form-label">Командировки за месеца(*):</label>
                                         <input type="number" th:field="*{tripNumberThisMonth}" class="form-control" id="tripNumberThisMonth" min="1" required>
                                     </div>
 
@@ -101,12 +102,12 @@
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="add-expenses-div">
-                                        <label for="additionalExpenses" class="form-label">Допълнителни Разходи:</label>
+                                        <label for="additionalExpenses" class="form-label">Допълнителни Разходи (*):</label>
                                         <input type="number" th:field="*{additionalExpenses}" step="0.01" min="0.00" max="10000.00" class="form-control" id="additionalExpenses" aria-describedby="emailHelp" required>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="number-documents-div">
-                                        <label for="numberDocuments" class="form-label">Бр. Разходни Док.:</label>
+                                        <label for="numberDocuments" class="form-label">Бр. Разходни Документи (*):</label>
                                         <input type="number" th:field="*{numberDocuments}" step="1" min="0" max="100" class="form-control" id="numberDocuments" aria-describedby="emailHelp" required>
                                     </div>
                                 </section>
@@ -127,14 +128,14 @@
                                         <div class="hotel-fields-container">
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary p-3">
-                                                <label for="nightStayPrice" class="form-label">Цена За Нощувка:</label>
+                                                <label for="nightStayPrice" class="form-label">Цена За Нощувка (*):</label>
                                                 <input type="number" th:field="*{nightStayPrice}" class="form-control" id="nightStayPrice" min="0">
                                             </div>
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary p-3">
                                                 <label for="numberOfNightsStayed" class="form-label" id="numberOfNightsLabel">Брой Нощувки:</label>
                                                 <select id="numberOfNightsStayed" name="day" th:field="*{numberOfNightsStayed}">
-                                                    <option th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}" th:value="${day}" th:text="${day}"></option>
+                                                    <option th:each="day : ${#numbers.sequence(new java.math.BigDecimal('0'), new java.math.BigDecimal('31'))}" th:value="${day}" th:text="${day}"></option>
                                                 </select>
                                             </div>
 
@@ -168,7 +169,7 @@
                                     </div>
                                     <div id="month-panel-div" class="hotel-box  mb-3 box text-bg-secondary">
                                             <fieldset class="month-container">
-                                                <legend>Изберете Дните В Командировка</legend>
+                                                <legend>Изберете Дните В Командировка (*)</legend>
 
                                                 <div class="day-box">
                                                     <label for="day1">Ден 1</label>
@@ -365,8 +366,8 @@
                                     </div>
 
                                     <div id="veh-costBy100-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="costBy100" class="form-label">Разход за 100km:</label>
-                                        <input type="number" th:field="*{costBy100}" class="form-control" id="costBy100">
+                                        <label for="costBy100" class="form-label">Разход за 100km (*):</label>
+                                        <input type="number" th:field="*{costBy100}" class="form-control" id="costBy100" min="0">
                                     </div>
 
                                     <div id="veh-fuelType-div" class="mb-3 box text-bg-secondary ">
@@ -375,23 +376,35 @@
                                     </div>
 
                                     <div id="veh-fuelPrice-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="fuelPrice" class="form-label">Цена На Литър:</label>
+                                        <label for="fuelPrice" class="form-label">Цена На Литър (*):</label>
                                         <input type="number" th:field="*{fuelPrice}" step="0.01" min="0.01" max="100.00" class="form-control" id="fuelPrice">
                                     </div>
 
                                     <div id="veh-kilometers-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="kilometers" class="form-label">Километри(общо):</label>
-                                        <input type="number" th:field="*{kilometers}" class="form-control" id="kilometers">
+                                        <label for="kilometers" class="form-label">Километри(общо) (*):</label>
+                                        <input type="number" th:field="*{kilometers}" class="form-control" id="kilometers" min="0">
                                     </div>
                                 </section>
                             </section>
-                            <button id="btn" onclick="validateBusinessTrip(this);" type="submit" class="btn p-3 mb-2 bg-warning text-dark">Готово</button>
+                            <button id="btn" onclick="submitForm(); validateBusinessTrip(this)" type="submit" class="btn p-3 mb-2 bg-warning text-dark">Готово</button>
                         </section>
                     </fieldset>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="/img/loading.gif" alt="Loading">
+                                    <p>Loading...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </main>
     </div>
-
 </body>
 
