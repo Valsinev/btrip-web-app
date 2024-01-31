@@ -35,14 +35,12 @@ function validateBusinessTrip(event) {
 
         function nightFieldsToggleRequired() {
             nightStayPrice.required = true;
-//            numberOfNights.required = true;
             fromWhichDayField.required = true;
             toWhichDayField.required = true;
         }
 
         function nightFieldsNotRequired() {
             nightStayPrice.required = false;
-//            numberOfNights.required = false;
             fromWhichDayField.required = false;
             toWhichDayField.required = false;
         }
@@ -117,16 +115,10 @@ function clearMonthPanelData() {
 
         function clearNightStayPanelData() {
             var nightStayPrice = document.getElementById('nightStayPrice');
-//            var numberOfNights = document.getElementById('numberOfNights');
-//            var fromWhichDay = document.getElementById('fromWhichDayField');
-//            var toWhichDay = document.getElementById('toWhichDayField');
             var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
             var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
 
             nightStayPrice.value = '';
-//            numberOfNights.value = '';
-//            fromWhichDay.value = '';
-//            toWhichDay.value = '';
             isTravelOnFirstDay.checked = false;
             isTravelOnLastDay.checked = false;
         }
