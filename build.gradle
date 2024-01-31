@@ -1,8 +1,22 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.1'
+	id 'org.springframework.boot' version '3.2.2'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id "com.microsoft.azure.azurewebapp" version "1.7.1"
 }
+
+azurewebapp {
+	subscription = '414eb359-a9b5-45f6-b80b-0646bd98ce19'
+	resourceGroup = 'komandirovka-group'
+	appName = 'komandirovka'
+	pricingTier = 'B1'
+	region = 'polandcentral'
+	runtime {
+		os = 'Linux'
+		webContainer = 'Java SE'
+		javaVersion = 'Java 17' } }
+
+
 
 group = 'stoyanov.venislav'
 version = '1'
