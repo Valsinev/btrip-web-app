@@ -118,7 +118,7 @@ function clearMonthPanelData() {
             var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
             var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
 
-            nightStayPrice.value = '';
+            nightStayPrice.value = 0;
             isTravelOnFirstDay.checked = false;
             isTravelOnLastDay.checked = false;
         }
@@ -151,7 +151,8 @@ function clearMonthPanelData() {
         }
 
         function clearVehPanelData() {
-            var makeAndModel = document.getElementById('makeAndModel');
+            var make = document.getElementById('make');
+            var model = document.getElementById('model');
             var category = document.getElementById('category');
             var regNumber = document.getElementById('regNumber');
             var costBy100 = document.getElementById('costBy100');
@@ -159,7 +160,8 @@ function clearMonthPanelData() {
             var fuelPrice = document.getElementById('fuelPrice');
             var kilometers = document.getElementById('kilometers');
 
-            makeAndModel.value = '';
+            make.value = '';
+            model.value = '';
             category.value = '';
             regNumber.value = '';
             costBy100.value = '';
