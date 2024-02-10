@@ -191,7 +191,7 @@
                                             <div class="hotel-field-box mb-3 box text-bg-secondary p-3">
                                                 <label for="numberOfNightsStayed" class="form-label" id="numberOfNightsLabel">Брой Нощувки:</label>
                                                 <select id="numberOfNightsStayed" name="day" th:field="*{numberOfNightsStayed}">
-                                                    <option th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}" th:value="${day}" th:text="${day}"></option>
+                                                    <option th:each="day : ${#numbers.sequence(new java.math.BigDecimal('0'), new java.math.BigDecimal('31'))}" th:value="${day}" th:text="${day}"></option>
                                                 </select>
                                             </div>
 
