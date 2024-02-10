@@ -50,4 +50,4 @@ jobs:
           app-name: 'komandirovka'
           slot-name: 'Production'
           package: '*.jar'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_11A41E6050BF4E9AB82C2EB206D844A6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_161EDCB4079B4422BB3663F73B4E7B09 }}
