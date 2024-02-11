@@ -38,10 +38,14 @@ public class BTrip implements BusinessTripForm {
     private boolean isTravelOnFirstDay;
     private boolean IsTravelOnLastDay;
     private boolean isTravelWithYourVehicle;
+    private boolean isTravelWithOtherTransport;
     private String model;
     private String make;
     private String category;
     private String registrationNumber;
+
+    @Min(value = 0, message = "моля въведете положително число.")
+    private BigDecimal otherTransportExpenses;
     @Min(value = 1, message = "моля въведете положително число.")
     private BigDecimal costBy100;
     @Min(value = 1, message = "моля въведете положително число.")
@@ -231,6 +235,16 @@ public class BTrip implements BusinessTripForm {
     }
 
     @Override
+    public boolean getIsTravelWithOtherTransport() {
+        return isTravelWithOtherTransport;
+    }
+
+    @Override
+    public BigDecimal getOtherTransportExpenses() {
+        return otherTransportExpenses;
+    }
+
+    @Override
     public int getFromWhichDayField() {
         return fromWhichDayField;
     }
@@ -400,6 +414,11 @@ public class BTrip implements BusinessTripForm {
         return day31;
     }
 
+    public void setOtherTransportExpenses(BigDecimal otherTransportExpenses) {
+        this.otherTransportExpenses = otherTransportExpenses;
+    }
+
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -478,6 +497,10 @@ public class BTrip implements BusinessTripForm {
 
     public void setIsTravelWithYourVehicle(boolean travelWithYourVehicle) {
         isTravelWithYourVehicle = travelWithYourVehicle;
+    }
+
+    public void setIsTravelWithOtherTransport(boolean travelWithOtherTransport) {
+        isTravelWithOtherTransport = travelWithOtherTransport;
     }
 
     public void setMake(String make) {

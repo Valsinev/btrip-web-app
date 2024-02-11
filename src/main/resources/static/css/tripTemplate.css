@@ -1,389 +1,371 @@
 select {
-  /* Your styles here */
-  background-color: #f2f2f2;
-  color: #333;
-  margin: 5%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+    /* Your styles here */
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 5%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 /* Style the checkbox input and its checked state */
-        input[type="checkbox"] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #FFA500; /* Orange border */
-            border-radius: 4px; /* Rounded corners */
-            outline: none;
-            margin-right: 5px;
-        }
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFA500;
+    /* Orange border */
+    border-radius: 4px;
+    /* Rounded corners */
+    outline: none;
+    margin-right: 5px;
+}
 
-        /* Style the checked checkbox */
-        input[type="checkbox"]:checked {
-            background-color: #FFA500; /* Orange background when checked */
-        }
+/* Style the checked checkbox */
+input[type="checkbox"]:checked {
+    background-color: #FFA500;
+    /* Orange background when checked */
+}
 
-        /* Optional: Label styling to enhance the appearance */
-        label {
-            display: inline-block;
-            margin-right: 20px;
-        }
+/* Optional: Label styling to enhance the appearance */
+label {
+    display: inline-block;
+    margin-right: 20px;
+}
 
-        /* Style the radio input and its checked state */
-                input[type="radio"] {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    width: 20px;
-                    height: 20px;
-                    border: 2px solid #FFA500; /* Orange border */
-                    border-radius: 50%; /* Makes the radio button round */
-                    outline: none;
-                    margin-right: 5px;
-                }
-
-
-
-        /* Style the checked radio button */
-                input[type="radio"]:checked {
-                    background-color: #FFA500; /* Orange background when checked */
-                }
-
-                /* Optional: Label styling to enhance the appearance */
-                label {
-                    display: inline-block;
-                    margin-right: 20px;
-                }
-
-                *{
-                    margin:0px;
-                    padding:0px;
-                    box-sizing:border-box;
-                }
-
-                #main {
-                    width:100%;
-                }
-
-                #content {
-                }
-                .clearfix::after
-                {
-                    content:"";
-                    display:block;
-                    clear:both;
-                }
-
-                #body-area-div{
-                    width:100%;
-                    min-height:990px;
-                }
-
-                #form-left-div{
-                padding-left: 2%;
-                    padding-top: 1%;
-                    width:68%;
-                    height:800px;
-                    float:left;
-                }
-
-                #form-right-div{
-                    width:30%;
-                    min-height:1000px;
-                    float:right;
-                }
-
-                #commonFields-div{
-                    width:100%;
-                    min-height:500px;
-                    margin-bottom:10px;
-                    padding-left:10px;
-                    padding-top:2%;
-                    padding-bottom:10px;
-                    border:2px solid white;
-                }
-
-                #nightStay-div{
-                    width:100%;
-                    min-height:380px;
-                }
-
-                #vehicle-radio-div{
-                    width:100%;
-                    min-height:80px;
-                    margin-top:10px;
-                }
-
-                #form-right-div{
-                    padding-right:11px;
-                    z-index: 1;
-                }
-
-                #vehicle-panel-div{
-                    position: relative;
-                    width:80%;
-                    padding-left: 10%;
-                    padding-right: 10%;
-                    min-height:600px;
-                    border:2px solid white;
-                    display: none;
-                }
-
-                #veh-make-div {
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:10px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-model-div {
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:10px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-category-div{
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:8px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-regN-div{
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:8px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-costBy100-div{
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:8px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-fuelType-div{
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:8px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-fuelPrice-div{
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:8px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                #veh-kilometers-div{
-                    width:92%;
-                    min-height:80px;
-                    margin-bottom:8px;
-                    margin-left:4%;
-                    margin-right:4%;
-                }
-
-                 .common-fields-container {
-                 padding-left: 7%;
-                 padding-left: 2%;
-                    display: flex;
-                    flex-wrap: wrap;
-                    max-width: 100%;
-                    grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
-                    grid-gap: 10px; /* Adjust the gap between divs as needed */
-                }
-                .common-field-box {
-                    width: 282px; /* Adjust the width as needed */
-                    height: 120px; /* Adjust the height as needed */
-                    border:2px solid white;
-                }
-
-                .hotel-fields-container {
-                    display: flex;
-                    padding: 2%;
-                    flex-wrap: wrap;
-                    max-width: 100%;
-                    grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
-                    grid-gap: 10px; /* Adjust the gap between divs as needed */
-                    border:2px solid white;
-                }
-
-                .hotel-field-box {
-                    width: 282px; /* Adjust the width as needed */
-                    height: 120px; /* Adjust the height as needed */
-                    border: 2px solid white;
-                    margin-left:10px;
-                    padding-left:40px;
-                    padding-top:20px;
-                }
+/* Style the radio input and its checked state */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFA500;
+    /* Orange border */
+    border-radius: 50%;
+    /* Makes the radio button round */
+    outline: none;
+    margin-right: 5px;
+}
 
 
 
-                #name-div{}
-                #pers-number-div{}
-                #position-div{}
-                #branch-div{}
-                #year-div{}
-                #month-div{}
-                #start-city-div{}
-                #end-city-div{}
-                #trips-div{}
-                #head-employer-div{}
-                #reason-div{}
-                #days-div{}
-                #add-expenses-div{}
+/* Style the checked radio button */
+input[type="radio"]:checked {
+    background-color: #FFA500;
+    /* Orange background when checked */
+}
 
-                #nightStay-radio-div{
-                    width:100%;
-                    min-height:80px;
-                    margin-bottom:10px;
-                    padding-top:1%;
-                    padding-bottom:1%;
-                    text-align: center;
-                    border: 2px solid white;
-                }
+/* Optional: Label styling to enhance the appearance */
+label {
+    display: inline-block;
+    margin-right: 20px;
+}
 
-                #hotel-panel-div{
-                    width:100%
-                    min-height:200px;
-                }
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 
-                #month-panel-div{
-                    width:100%
-                    min-height:200px;
-                }
+#main {
+    width: 100%;
+}
 
-                 .hotel-panel-container {
-                    position: relative;
-                    width: 100%;
-                    min-height: 200px;
-                }
+#content {}
 
-                .hotel-box {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                }
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
 
-                .day-box{
-                width:110px;
-                }
+#body-area-div {
+    width: 100%;
+    min-height: 990px;
+}
 
-                .month-container {
-                    width: 100%;
-                    border: 2px solid white;
-                    padding-left: 3%;
-                    padding-top: 4%;
-                    padding-bottom: 5%;
-                    display: flex;
-                    flex-wrap: wrap;
-                }
+#form-left-div {
+    padding-left: 2%;
+    padding-top: 1%;
+    width: 68%;
+    height: 800px;
+    float: left;
+}
 
-                /* Style the checkboxes and labels */
-                .month-container label {
-                    display: block;
-                    margin-bottom: 5px;
-                }
+#form-right-div {
+    width: 30%;
+    min-height: 1000px;
+    float: right;
+}
 
-                .month-container input[type="checkbox"] {
-                    margin-right: 0px;
-                }
+#commonFields-div {
+    width: 100%;
+    min-height: 500px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 2%;
+    padding-bottom: 10px;
+    border: 2px solid white;
+}
 
-                #buttonPlusVeh{
-                padding-left: 10%;
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 980px;
-                }
+#nightStay-div {
+    width: 100%;
+    min-height: 380px;
+}
 
-                #btn{
-                    width:93%;
-                    min-height: 130px;
-                }
+#vehicle-radio-div {
+    width: 100%;
+    min-height: 80px;
+    margin-top: 10px;
+}
 
-                .information-container {
-                  position: relative;
-                  display: inline-block;
-                }
+#form-right-div {
+    padding-right: 11px;
+    z-index: 1;
+}
 
-                .additional-information {
-                  width:300px;
-                  display: none;
-                  position: absolute;
-                  border: 5px solid #FFA500;
-                  padding: 10px;
-                  z-index: 1;
-                  top: 100%;
-                  left: 0;
-                  font-family: serif;
-                }
+#vehicle-panel-div {
+    position: relative;
+    min-height: 600px;
+    display: none;
+}
 
-                .information-container:hover .additional-information {
-                  display: block;
-                }
+#veh-make-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
 
-                .information-text{
-                    font-size: 20px;
-                    padding-left:10px;
-                    padding-top:7px;
-                    color:#FFA500;
-                }
+#veh-model-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
+
+#veh-category-div {
+    min-height: 80px;
+    margin-bottom: 10px;
+}
+
+#veh-regN-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
+
+#veh-costBy100-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
+
+#veh-fuelType-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
+
+#veh-fuelPrice-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
+
+#veh-kilometers-div {
+    min-height: 80px;
+    margin-bottom: 8px;
+}
+
+.common-fields-container {
+    padding-left: 7%;
+    padding-left: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    /* Adjust the number of columns as needed */
+    grid-gap: 10px;
+    /* Adjust the gap between divs as needed */
+}
+
+.common-field-box {
+    width: 282px;
+    /* Adjust the width as needed */
+    height: 120px;
+    /* Adjust the height as needed */
+    border: 2px solid white;
+}
+
+.hotel-fields-container {
+    display: flex;
+    padding: 2%;
+    flex-wrap: wrap;
+    max-width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    /* Adjust the number of columns as needed */
+    grid-gap: 10px;
+    /* Adjust the gap between divs as needed */
+    border: 2px solid white;
+}
+
+.hotel-field-box {
+    width: 282px;
+    /* Adjust the width as needed */
+    height: 120px;
+    /* Adjust the height as needed */
+    border: 2px solid white;
+    margin-left: 10px;
+    padding-left: 40px;
+    padding-top: 20px;
+}
 
 
-         /* Style the radio input and its checked state */
-                input[type="radio"] {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    width: 20px;
-                    height: 20px;
-                    border: 2px solid #FFA500; /* Orange border */
-                    border-radius: 50%; /* Makes the radio button round */
-                    outline: none;
-                    margin-right: 5px;
-                }
+#nightStay-radio-div {
+    width: 100%;
+    min-height: 80px;
+    margin-bottom: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    border: 2px solid white;
+}
 
-                /* Style the checked radio button */
-                input[type="radio"]:checked {
-                    background-color: #FFA500; /* Orange background when checked */
-                }
+#hotel-panel-div {
+    width: 100%; 
+    min-height:200px;
+}
 
-                /* Optional: Label styling to enhance the appearance */
-                label {
-                    display: inline-block;
-                    margin-right: 20px;
-                }
+#month-panel-div {
+    width: 100%;
+    min-height:200px;
+}
+
+.hotel-panel-container {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+}
+
+.hotel-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.day-box {
+    width: 110px;
+}
+
+.month-container {
+    width: 100%;
+    border: 2px solid white;
+    padding-left: 3%;
+    padding-top: 4%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Style the checkboxes and labels */
+.month-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.month-container input[type="checkbox"] {
+    margin-right: 0px;
+}
+
+#buttonPlusVeh {
+
+    width: 93%;
+    padding-top: 3%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 980px;
+}
+
+#btn {
+    width: 93%;
+    min-height: 130px;
+}
+
+.information-container {
+    position: relative;
+    display: inline-block;
+}
+
+.additional-information {
+    width: 300px;
+    display: none;
+    position: absolute;
+    border: 5px solid #FFA500;
+    padding: 10px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    font-family: serif;
+}
+
+.information-container:hover .additional-information {
+    display: block;
+}
+
+.information-text {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 7px;
+    color: #FFA500;
+}
 
 
-                .loading-spinner{
-                  width:30px;
-                  height:30px;
-                  border:2px solid indigo;
-                  border-radius:50%;
-                  border-top-color:#0001;
-                  display:inline-block;
-                  animation:loadingspinner .7s linear infinite;
-                }
-                @keyframes loadingspinner{
-                  0%{
-                    transform:rotate(0deg)
-                  }
-                  100%{
-                    transform:rotate(360deg)
-                  }
-                }
+/* Style the radio input and its checked state */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFA500;
+    /* Orange border */
+    border-radius: 50%;
+    /* Makes the radio button round */
+    outline: none;
+    margin-right: 5px;
+}
+
+#other-transport-expenses-div {
+    display: none;
+}
+
+/* Style the checked radio button */
+input[type="radio"]:checked {
+    background-color: #FFA500;
+    /* Orange background when checked */
+}
+
+/* Optional: Label styling to enhance the appearance */
+label {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid indigo;
+    border-radius: 50%;
+    border-top-color: #0001;
+    display: inline-block;
+    animation: loadingspinner .7s linear infinite;
+}
+
+@keyframes loadingspinner {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}

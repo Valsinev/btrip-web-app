@@ -78,7 +78,8 @@
                     <div class="information-text">Информация ⓘ</div>
 
                     <div class="additional-information  mb-3 box text-bg-secondary">
-                        <p>Здравейте, този сайт е направен за хоби и упражнение, възможни са бъгове/грешки.</p>
+                        <p>Здравейте, този сайт е направен за хоби и упражнение.</p>
+                        <p>Не покрива всички възможни случаи, възможни са бъгове/грешки.</p>
                         <p>Извинявам се предварително за което. Моля въвеждайте правилни данни.</p>
                         <p>Проверявайте си крайните документи преди да ги изпратите.</p>
                         <p>Поздрави и успех!</p>
@@ -91,9 +92,9 @@
                             <section id="commonFields-div">
                                 <section class="common-fields-container mb-3 box text-bg-secondary" id="common-fields-div">
 
-                                    <div class="common-field-box mb-3 box text-bg-secondary p-3" id="name-div">
-                                        <label for="fullName" class="form-label" >Три Имена:</label>
-                                        <input type="text" th:field="*{fullName}" class="form-control" id="fullName">
+                                    <div class="form-floating mb-3 box text-bg-secondary p-3" id="name-div">
+                                        <input type="text" th:field="*{fullName}"  class="form-control bg-secondary" id="fullName" placeholder="Три имена">
+                                        <label for="fullName" class="text-dark" >Три Имена:</label>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="pers-number-div">
@@ -137,7 +138,7 @@
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="trips-div">
                                         <label for="tripNumberThisMonth" class="form-label">Командировки за месеца (*):</label>
-                                        <input type="number" th:field="*{tripNumberThisMonth}" class="form-control" id="tripNumberThisMonth" min="1" required>
+                                        <input type="number" th:field="*{tripNumberThisMonth}" class="form-control" id="tripNumberThisMonth" min="1" value="1" required>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="head-employer-div">
@@ -159,7 +160,7 @@
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="add-expenses-div">
                                         <label for="additionalExpenses" class="form-label">Допълнителни Разходи (*):</label>
-                                        <input type="number" th:field="*{additionalExpenses}" step="0.01" min="0.00" max="10000.00" class="form-control" id="additionalExpenses" aria-describedby="emailHelp" required>
+                                        <input type="number" th:field="*{additionalExpenses}" step="0.01" min="0.00" max="10000.00" class="form-control" id="additionalExpenses" aria-describedby="emailHelp" value="0" required>
                                     </div>
 
                                     <div class="common-field-box mb-3 box text-bg-secondary p-3" id="number-documents-div">
@@ -210,15 +211,13 @@
                                             </div>
 
                                             <div class="hotel-field-box mb-3 box text-bg-secondary">
-                                                <div class="mb-3 box text-bg-secondary">
-                                                    Пътуване Първа Дата?
-                                                    <label class="form-check-label" for="isTravelOnFirstDay">
-                                                        <input class="form-check-input" th:field="*{isTravelOnFirstDay}" type="checkbox" id="isTravelOnFirstDay"></label>
+                                                <div class="form-check mb-3 box text-bg-secondary">
+                                                    <input class="form-check-input" th:field="*{isTravelOnFirstDay}" type="checkbox" id="isTravelOnFirstDay">
+                                                    <label class="form-check-label" for="isTravelOnFirstDay">Пътуване Първа Дата?</label>
                                                 </div>
-                                                <div class="mb-3 box text-bg-secondary">
-                                                    Пътуване Крайна Дата?
-                                                    <label class="form-check-label" for="isTravelOnLastDay">
-                                                        <input class="form-check-input" th:field="*{isTravelOnLastDay}" type="checkbox" id="isTravelOnLastDay"></label>
+                                                <div class="form-check mb-3 box text-bg-secondary">
+                                                    <input class="form-check-input" th:field="*{isTravelOnLastDay}" type="checkbox" id="isTravelOnLastDay">
+                                                    <label class="form-check-label" for="isTravelOnLastDay">Пътуване Последна Дата?</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -388,61 +387,86 @@
                         </section>
 
                         <section id="form-right-div">
+
                             <section id="buttonPlusVeh">
+                                <button id="btn" onclick="validateBusinessTrip(this); submitForm(); " type="submit" class="btn btn-primary-lg bg-warning text-dark">Попълни</button>
                                 <section id="vehicle-radio-div" class=" mb-3 box text-bg-secondary">
-                                    <h3>Пътувахте Ли с Ваше Превозно Средство?</h3>
+                                    <h2>Пътуване с Ваше Превозно Средство?</h2>
                                     <label for="isTravel">
-                                        <input type="radio" name="travelRadio" id="isTravel" onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="true">
-                                        Да</label>
-                                    <label for="isNotTravel">
-                                        <input type="radio" name="travelRadio"  id="isNotTravel"  onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="false">
-                                        Не</label>
+                                        <h5>Да</h5>
+                                        <input type="radio" name="travelRadio" id="isTravel" onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="true" checked>
+
+                                    </label>
+                                    <label for="otherTravel">
+                                        <h5>Не</h5>
+                                        <input type="radio" name="travelRadio"  id="otherTravel"  onclick="showHideVehPanelDiv(this)" th:field="*{isTravelWithYourVehicle}" th:value="false">
+                                    </label>
                                 </section>
 
-                                <section id="vehicle-panel-div" class="mb-3 box text-bg-secondary" >
+                                <section id="other-transport-section">
 
-                                    <div id="veh-make-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="make" class="form-label">Марка:</label>
-                                        <input type="text" th:field="*{make}" class="form-control" id="make">
+                                    <h2>Други Транспортни Разходи?</h2>
+                                    <label for="isTravelWithOtherTransport">
+                                        <h5>Да</h5>
+                                        <input type="radio" name="travelRadio" id="isTravelWithOtherTransport" onclick="showHideOtherTransportExpenses(this)" th:field="*{isTravelWithOtherTransport}" th:value="true">
+
+                                    </label>
+                                    <label for="isTravelWithOtherVehicle">
+                                        <h5>Не</h5>
+                                        <input type="radio" name="travelRadio"  id="isTravelWithOtherVehicle"  onclick="showHideOtherTransportExpenses(this)" th:field="*{isTravelWithOtherTransport}" th:value="false">
+                                    </label>
+
+                                    <div id="other-transport-expenses-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                        <label for="otherTransportExpenses" class="form-label">Разходи За Транспорт:</label>
+                                        <input type="number" th:field="*{otherTransportExpenses}" class="form-control" id="otherTransportExpenses" min="0" required>
                                     </div>
+                                </section>
 
-                                    <div id="veh-model-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="model" class="form-label">Модел:</label>
-                                        <input type="text" th:field="*{model}" class="form-control" id="model">
-                                    </div>
+                                <section id="vehicle-panel-div" class="container-fluid mb-3 box text-bg-secondary" >
+                                    <div class="row">
 
-                                    <div id="veh-category-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="category" class="form-label">Категория:</label>
-                                        <input type="text" th:field="*{category}" class="form-control" id="category">
-                                    </div>
+                                        <div id="veh-make-div" class="common-field-box col-6 mb-3 box text-bg-secondary p-3">
+                                            <label for="make" class="form-label">Марка:</label>
+                                            <input type="text" th:field="*{make}" class="form-control" id="make">
+                                        </div>
 
-                                    <div id="veh-regN-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="regNumber" class="form-label">Регистрационен номер:</label>
-                                        <input type="text" th:field="*{registrationNumber}" class="form-control" id="regNumber">
-                                    </div>
+                                        <div id="veh-model-div" class="common-field-box col-6 mb-3 box text-bg-secondary p-3">
+                                            <label for="model" class="form-label">Модел:</label>
+                                            <input type="text" th:field="*{model}" class="form-control" id="model">
+                                        </div>
 
-                                    <div id="veh-costBy100-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="costBy100" class="form-label">Разход за 100km (*):</label>
-                                        <input type="number" th:field="*{costBy100}" class="form-control" id="costBy100" min="0">
-                                    </div>
+                                        <div id="veh-category-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                            <label for="category" class="form-label">Категория:</label>
+                                            <input type="text" th:field="*{category}" class="form-control" id="category">
+                                        </div>
 
-                                    <div id="veh-fuelType-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="fuelType" class="form-label">Тип На Гориво:</label>
-                                        <input type="text" th:field="*{fuelType}" class="form-control" id="fuelType">
-                                    </div>
+                                        <div id="veh-regN-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                            <label for="regNumber" class="form-label">Регистрационен номер:</label>
+                                            <input type="text" th:field="*{registrationNumber}" class="form-control" id="regNumber">
+                                        </div>
 
-                                    <div id="veh-fuelPrice-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="fuelPrice" class="form-label">Цена На Литър (*):</label>
-                                        <input type="number" th:field="*{fuelPrice}" step="0.01" min="0.01" max="100.00" class="form-control" id="fuelPrice">
-                                    </div>
+                                        <div id="veh-costBy100-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                            <label for="costBy100" class="form-label">Разход за 100km (*):</label>
+                                            <input type="number" th:field="*{costBy100}" class="form-control" id="costBy100" min="0">
+                                        </div>
 
-                                    <div id="veh-kilometers-div" class="mb-3 box text-bg-secondary ">
-                                        <label for="kilometers" class="form-label">Километри(общо) (*):</label>
-                                        <input type="number" th:field="*{kilometers}" class="form-control" id="kilometers" min="0">
+                                        <div id="veh-fuelType-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                            <label for="fuelType" class="form-label">Тип На Гориво:</label>
+                                            <input type="text" th:field="*{fuelType}" class="form-control" id="fuelType">
+                                        </div>
+
+                                        <div id="veh-fuelPrice-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                            <label for="fuelPrice" class="form-label">Цена На Литър (*):</label>
+                                            <input type="number" th:field="*{fuelPrice}" step="0.01" min="0.01" max="100.00" class="form-control" id="fuelPrice">
+                                        </div>
+
+                                        <div id="veh-kilometers-div" class="common-field-box mb-3 box text-bg-secondary p-3">
+                                            <label for="kilometers" class="form-label">Километри(общо) (*):</label>
+                                            <input type="number" th:field="*{kilometers}" class="form-control" id="kilometers" min="0">
+                                        </div>
                                     </div>
                                 </section>
                             </section>
-                            <button id="btn" onclick="validateBusinessTrip(this); submitForm(); " type="submit" class="btn p-3 mb-2 bg-warning text-dark">Готово</button>
                         </section>
                     </fieldset>
 
@@ -453,7 +477,6 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <img src="/img/loading.gif" alt="Loading">
-                                    <p>Loading...</p>
                                 </div>
                             </div>
                         </div>
