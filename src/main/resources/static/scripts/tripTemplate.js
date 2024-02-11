@@ -125,7 +125,7 @@ function showHideNightStayPanelDiv(radio) {
 }
 
 function showHideOtherTransportExpenses(radio) {
-    var otherTransportPanel = document.getElementById('other-transport-expenses-div');
+    var otherTransportPanel = document.getElementById('other-transport-div');
     var otherTransportExpenses = document.getElementById('otherTransportExpenses');
 
     if (radio.value === 'true') {
@@ -141,7 +141,7 @@ function showHideOtherTransportExpenses(radio) {
 
 function showHideVehPanelDiv(radio) {
     var vehPanel = document.getElementById('vehicle-panel-div');
-    var otherTransportPanel = document.getElementById('other-transport-section');
+    var otherTransportPanel = document.getElementById('other-transport-div');
 
     if (radio.value === 'true') {
         toggleRequiredVehFields();
