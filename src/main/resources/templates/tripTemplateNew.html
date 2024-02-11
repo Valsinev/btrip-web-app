@@ -221,25 +221,30 @@
                                     </div>
                                 </section>
 
-                                <section class="row">
+                                <section class="row" id="other-transport-section">
 
-                                    <h2>Други Транспортни Разходи?</h2>
-                                    <div class="col-2">
-                                        <label for="isTravelWithOtherTransport">
-                                            <h5>Да</h5>
-                                            <input type="radio" name="travelRadio" id="isTravelWithOtherTransport"
-                                                onclick="showHideOtherTransportExpenses(this)"
-                                                th:field="*{isTravelWithOtherTransport}" th:value="true">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <h2>Други Транспортни Разходи?</h2>
+                                            <div class="col-2">
+                                                <label for="isTravelWithOtherTransport">
+                                                    <h5>Да</h5>
+                                                    <input type="radio" name="travelRadio"
+                                                        id="isTravelWithOtherTransport"
+                                                        onclick="showHideOtherTransportExpenses(this)"
+                                                        th:field="*{isTravelWithOtherTransport}" th:value="true">
 
-                                        </label>
-                                    </div>
-                                    <div class="col-10">
-                                        <label for="isTravelWithOtherVehicle">
-                                            <h5>Не</h5>
-                                            <input type="radio" name="travelRadio" id="isTravelWithOtherVehicle"
-                                                onclick="showHideOtherTransportExpenses(this)"
-                                                th:field="*{isTravelWithOtherTransport}" th:value="false">
-                                        </label>
+                                                </label>
+                                            </div>
+                                            <div class="col-10">
+                                                <label for="isTravelWithOtherVehicle">
+                                                    <h5>Не</h5>
+                                                    <input type="radio" name="travelRadio" id="isTravelWithOtherVehicle"
+                                                        onclick="showHideOtherTransportExpenses(this)"
+                                                        th:field="*{isTravelWithOtherTransport}" th:value="false">
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
 

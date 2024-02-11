@@ -30,6 +30,10 @@ input[type="checkbox"]:checked {
     /* Orange background when checked */
 }
 
+#other-transport-div {
+    display: none;
+}
+
 /* Optional: Label styling to enhance the appearance */
 label {
     display: inline-block;
@@ -67,6 +71,8 @@ label {
     display: inline-block;
     margin-right: 20px;
 }
+
+
 
 #vehicle-panel-div {
     display: none;

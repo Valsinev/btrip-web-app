@@ -142,14 +142,22 @@ function showHideOtherTransportExpenses(radio) {
 function showHideVehPanelDiv(radio) {
     var vehPanel = document.getElementById('vehicle-panel-div');
     var otherTransportPanel = document.getElementById('other-transport-div');
+    var otherTransportSection = document.getElementById('other-transport-section');
+    var otherTransportCheck = document.getElementById('isTravelWithOtherVehicle');
+    var otherTransportExpenses = document.getElementById('otherTransportExpenses');
 
     if (radio.value === 'true') {
         toggleRequiredVehFields();
         vehPanel.style.display = 'block'; // Show Div 1
         otherTransportPanel.style.display = 'none'; // hide Div 2
+        otherTransportSection.style.display = 'none';
+        otherTransportCheck.checked = true;
+        otherTransportExpenses.value = '';
+        otherTransportExpenses.required = false;
     } else {
         vehPanel.style.display = 'none'; // Hide Div 1
-        otherTransportPanel.style.display = 'block'; // show Div 2
+        otherTransportPanel.style.display = 'none'; // show Div 2
+        otherTransportSection.style.display = 'block';
         toggleNotRequiredVehFields();
         clearVehPanelData();
     }
