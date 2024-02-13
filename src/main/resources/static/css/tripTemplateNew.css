@@ -64,8 +64,10 @@ input[type="radio"]:checked {
 }
 
 #content {
-padding-bottom: 1%;
+    padding-top: 4%;
+    padding-bottom: 1%;
 }
+
 /* Optional: Label styling to enhance the appearance */
 label {
     display: inline-block;
@@ -75,6 +77,10 @@ label {
 
 
 #vehicle-panel-div {
+    display: none;
+}
+
+#is-travel-first-last-day {
     display: none;
 }
 
@@ -155,6 +161,7 @@ label {
 }
 
 #btn {
+    height: 70px;
 }
 
 @keyframes loadingspinner {

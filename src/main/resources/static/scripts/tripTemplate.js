@@ -138,6 +138,26 @@ function showHideOtherTransportExpenses(radio) {
     }
 }
 
+function showHideIsTravelOnFirstLastDay(radio) {
+    var isTravelOnFirstLastDay = document.getElementById('is-travel-first-last-day');
+    var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
+    var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
+
+
+    if (radio.value === 'false') {
+        isTravelOnFirstLastDay.style.display = 'none';
+        isTravelOnFirstDay.checked = false;
+        isTravelOnLastDay.checked = false;
+    } else {
+        isTravelOnFirstLastDay.style.display = 'block';
+    }
+}
+
+    function redirectToPage() {
+        // You can change 'destination.html' to the URL of the page you want to redirect to
+        window.location.href = '/';
+    }
+
 
 function showHideVehPanelDiv(radio) {
     var vehPanel = document.getElementById('vehicle-panel-div');

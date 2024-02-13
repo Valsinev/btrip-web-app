@@ -74,22 +74,29 @@
 </head>
 
 
-<body class="container-fluid">
+<body class="container-fluid bg-secondary">
+<!--NAVBAR-->
+<nav class="row navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="col-xl-10 col-lg-6 col-md-4 col-sm-4 navbar-brand text-light" href="/">Начало</a>
+        <a class="col-1 nav-link text-light m-3" href="#" id="information-container">Информация</a>
+        <a class="col-1 nav-link text-warning" href="#">Контакти</a>
+</nav>
+<!-- end NAVBAR-->
     <main class="container-fluid text-bg-secondary" id="content">
 
         <div id="container-fluid body-area-div">
-            <div class="row information-container">
-                <div class="information-text">Информация ⓘ</div>
+<!--            <div class="row information-container">-->
+<!--                <div class="information-text">Информация ⓘ</div>-->
 
-                <div class="additional-information  mb-3 box text-bg-secondary">
-                    <p>Здравейте, този сайт е направен за хоби и упражнение.</p>
-                    <p>Не покрива всички възможни случаи, възможни са бъгове/грешки.</p>
-                    <p>Извинявам се предварително за което. Моля въвеждайте правилни данни.</p>
-                    <p>Проверявайте си крайните документи преди да ги изпратите.</p>
-                    <p>За бъгове/грешки може да пишете с подробно описание на: valsinev@abv.bg.</p>
-                    <p>Поздрави и успех!</p>
-                </div>
-            </div>
+<!--                <div class="additional-information  mb-3 box text-bg-secondary">-->
+<!--                    <p>Здравейте, този сайт е направен за хоби и упражнение.</p>-->
+<!--                    <p>Не покрива всички възможни случаи, възможни са бъгове/грешки.</p>-->
+<!--                    <p>Извинявам се предварително за което. Моля въвеждайте правилни данни.</p>-->
+<!--                    <p>Проверявайте си крайните документи преди да ги изпратите.</p>-->
+<!--                    <p>За бъгове/грешки може да пишете с подробно описание на: valsinev@abv.bg.</p>-->
+<!--                    <p>Поздрави и успех!</p>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <form th:action="@{/showImages}" method="post" th:object="${bTrip}" id="tripForm">
                 <fieldset class="container-fluid">
@@ -102,9 +109,10 @@
                                 <section class="row mb-3 box text-bg-secondary" id="common-fields-div">
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="name-div">
-                                        <input type="text" th:field="*{fullName}" class="form-control bg-secondary"
-                                            id="fullName" placeholder="Три имена">
-                                        <label for="fullName" class="text-dark">Три Имена:</label>
+
+                                        <label for="fullName" class="form-label">Три Имена:</label>
+                                        <input type="text" th:field="*{fullName}" class="form-control"
+                                            id="fullName">
                                     </div>
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="pers-number-div">
@@ -171,7 +179,7 @@
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="days-div">
                                         <label for="numberOfDays" class="form-label">За Колко Дни:</label>
-                                        <select id="numberOfDays" name="day" th:field="*{numberOfDays}">
+                                        <select class="form-select-lg" id="numberOfDays" name="day" th:field="*{numberOfDays}">
                                             <option
                                                 th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}"
                                                 th:value="${day}" th:text="${day}"></option>
@@ -206,16 +214,16 @@
                                         <label for="isTravel">
                                             <h5>Да</h5>
                                             <input type="radio" name="travelRadio" id="isTravel"
-                                                onclick="showHideVehPanelDiv(this)"
+                                                onclick="showHideVehPanelDiv(this), showHideIsTravelOnFirstLastDay(this)"
                                                 th:field="*{isTravelWithYourVehicle}" th:value="true" checked>
 
                                         </label>
                                     </div>
                                     <div class="col-10">
-                                        <label for="otherTravel">
+                                        <label for="isNotTravel">
                                             <h5>Не</h5>
-                                            <input type="radio" name="travelRadio" id="otherTravel"
-                                                onclick="showHideVehPanelDiv(this)"
+                                            <input type="radio" name="travelRadio" id="isNotTravel"
+                                                onclick="showHideVehPanelDiv(this), showHideIsTravelOnFirstLastDay(this)"
                                                 th:field="*{isTravelWithYourVehicle}" th:value="false">
                                         </label>
                                     </div>
@@ -231,7 +239,7 @@
                                                     <h5>Да</h5>
                                                     <input type="radio" name="travelRadio"
                                                         id="isTravelWithOtherTransport"
-                                                        onclick="showHideOtherTransportExpenses(this)"
+                                                        onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"
                                                         th:field="*{isTravelWithOtherTransport}" th:value="true">
 
                                                 </label>
@@ -240,7 +248,7 @@
                                                 <label for="isTravelWithOtherVehicle">
                                                     <h5>Не</h5>
                                                     <input type="radio" name="travelRadio" id="isTravelWithOtherVehicle"
-                                                        onclick="showHideOtherTransportExpenses(this)"
+                                                        onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"
                                                         th:field="*{isTravelWithOtherTransport}" th:value="false">
                                                 </label>
                                             </div>
@@ -385,15 +393,15 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="col6 p-3">
-                                                    <div class="form-check mb-3 box text-bg-secondary">
-                                                        <input class="form-check-input" th:field="*{isTravelOnFirstDay}"
+                                                <div class="col6 p-3" id="is-travel-first-last-day">
+                                                    <div class="form-check mb-3 box text-bg-secondary" id="is-travel-first-day">
+                                                        <input class="" th:field="*{isTravelOnFirstDay}"
                                                             type="checkbox" id="isTravelOnFirstDay">
                                                         <label class="form-check-label"
                                                             for="isTravelOnFirstDay">Пътуване Първа Дата?</label>
                                                     </div>
-                                                    <div class="form-check mb-3 box text-bg-secondary">
-                                                        <input class="form-check-input" th:field="*{isTravelOnLastDay}"
+                                                    <div class="form-check mb-3 box text-bg-secondary" id="is-travel-last-day">
+                                                        <input class="" th:field="*{isTravelOnLastDay}"
                                                             type="checkbox" id="isTravelOnLastDay">
                                                         <label class="form-check-label" for="isTravelOnLastDay">Пътуване
                                                             Последна Дата?</label>
@@ -597,7 +605,7 @@
                             </div>
                         </section>
                     </div>
-                    <div class="row">
+                    <div class="row ">
                         <button id="btn" onclick="validateBusinessTrip(this); submitForm(); " type="submit"
                             class="col-6 offset-6 btn btn-primary bg-warning text-dark">Попълни</button>
                     </div>
