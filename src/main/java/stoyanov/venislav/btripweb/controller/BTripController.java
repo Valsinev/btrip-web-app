@@ -27,7 +27,8 @@ public class BTripController {
     @GetMapping("/")
     public String showTripForm(Model model) {
         model.addAttribute("bTrip", new BTrip());
-        return "tripTemplate";
+        //return "tripTemplate";
+        return "tripTemplateNew";
     }
 
     @PostMapping("/showImages")
@@ -36,16 +37,19 @@ public class BTripController {
         System.out.println(bindingResult.toString());
         //validation of model class fields
         if (bindingResult.hasErrors()) {
-            return "tripTemplate";
+            //return "tripTemplate";
+            return "tripTemplateNew";
         }
         //validation if checked days are equal to number of days
         bTrip.setDays(BTripGetDaysFromCheckboxesOrFields.getDays(bTrip));
         //if selected days are different number than number of days
         if (bTrip.getNumberOfDays().compareTo(BigDecimal.valueOf(bTrip.getDays().size())) != 0) {
-            return "tripTemplate";
+            //return "tripTemplate";
+            return "tripTemplateNew";
         }
         if (bTrip.getDays().isEmpty() || Objects.equals(bTrip.getDays().size(), bTrip.getNumberOfDays())) {
-            return "tripTemplate";
+            //return "tripTemplate";
+            return "tripTemplateNew";
         } else {
             //end the validation section
 

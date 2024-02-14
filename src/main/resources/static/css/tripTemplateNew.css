@@ -1,0 +1,169 @@
+select {
+    /* Your styles here */
+    background-color: #ffffff;
+    color: #333;
+    margin: 5%;
+    padding: 10px;
+    border: 1px solid #fffffe;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style the checkbox input and its checked state */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFA500;
+    /* Orange border */
+    border-radius: 4px;
+    /* Rounded corners */
+    outline: none;
+    margin-right: 5px;
+}
+
+/* Style the checked checkbox */
+input[type="checkbox"]:checked {
+    background-color: #FFA500;
+    /* Orange background when checked */
+}
+
+#other-transport-div {
+    display: none;
+}
+
+/* Style the radio input and its checked state */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFA500;
+    /* Orange border */
+    border-radius: 50%;
+    /* Makes the radio button round */
+    outline: none;
+    margin-right: 5px;
+}
+
+
+
+/* Style the checked radio button */
+input[type="radio"]:checked {
+    background-color: #FFA500;
+    /* Orange background when checked */
+}
+
+#content {
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+
+/* Optional: Label styling to enhance the appearance */
+label {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+
+#vehicle-panel-div {
+    display: none;
+}
+
+#is-travel-first-last-day {
+    display: none;
+}
+
+.month-container input[type="checkbox"] {
+    margin-right: 0px;
+}
+
+.information-container {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+}
+
+.additional-information {
+    width: 300px;
+    display: none;
+    position: absolute;
+    border: 5px solid #FFA500;
+    padding: 10px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    font-family: serif;
+}
+
+.information-container:hover .additional-information {
+    display: block;
+}
+
+.information-text {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 7px;
+    color: #FFA500;
+}
+
+
+/* Style the radio input and its checked state */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFA500;
+    /* Orange border */
+    border-radius: 50%;
+    /* Makes the radio button round */
+    outline: none;
+    margin-right: 5px;
+}
+
+#other-transport-expenses-div {
+    display: none;
+}
+
+/* Style the checked radio button */
+input[type="radio"]:checked {
+    background-color: #FFA500;
+    /* Orange background when checked */
+}
+
+/* Optional: Label styling to enhance the appearance */
+label {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid indigo;
+    border-radius: 50%;
+    border-top-color: #0001;
+    display: inline-block;
+    animation: loadingspinner .7s linear infinite;
+}
+
+#submit-button {
+    height: 70px;
+}
+
+@keyframes loadingspinner {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}

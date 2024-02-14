@@ -1,3 +1,22 @@
+document.getElementById("submit-button").onclick = function(event) {
+    // Custom function to execute before form submission
+    var form = document.getElementById('tripForm');
+    if(validateBusinessTrip(event.target)) {
+        if (form.checkValidity()) {
+            // If the form is valid, show the modal
+            $('#loading-modal').modal('show');
+        } else {
+            // If the form is not valid, do not show the modal
+            // You can add additional logic here, such as displaying an error message
+            console.log("Form validation failed");
+        }
+    }
+    // You can add any additional functions or logic here
+
+    // If you want to submit the form programmatically, you can call the submit() method on the form element
+    // document.getElementById("myForm").submit();
+};
+
 
 function validateBusinessTrip(event) {
 
@@ -13,8 +32,12 @@ function validateBusinessTrip(event) {
             alert("Броят дни не съответства на посочените!");
             event.preventDefault(); // Prevent form submission
         }
+        else {
+            return true;
+        }
     }
 }
+
 
 
 function showHideNightStayPanelDiv(radio) {
@@ -125,7 +148,7 @@ function showHideNightStayPanelDiv(radio) {
 }
 
 function showHideOtherTransportExpenses(radio) {
-    var otherTransportPanel = document.getElementById('other-transport-expenses-div');
+    var otherTransportPanel = document.getElementById('other-transport-div');
     var otherTransportExpenses = document.getElementById('otherTransportExpenses');
 
     if (radio.value === 'true') {
@@ -138,18 +161,46 @@ function showHideOtherTransportExpenses(radio) {
     }
 }
 
+function showHideIsTravelOnFirstLastDay(radio) {
+    var isTravelOnFirstLastDay = document.getElementById('is-travel-first-last-day');
+    var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
+    var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
+
+
+    if (radio.value === 'false') {
+        isTravelOnFirstLastDay.style.display = 'none';
+        isTravelOnFirstDay.checked = false;
+        isTravelOnLastDay.checked = false;
+    } else {
+        isTravelOnFirstLastDay.style.display = 'block';
+    }
+}
+
+    function redirectToPage() {
+        // You can change 'destination.html' to the URL of the page you want to redirect to
+        window.location.href = '/';
+    }
+
 
 function showHideVehPanelDiv(radio) {
     var vehPanel = document.getElementById('vehicle-panel-div');
-    var otherTransportPanel = document.getElementById('other-transport-section');
+    var otherTransportPanel = document.getElementById('other-transport-div');
+    var otherTransportSection = document.getElementById('other-transport-section');
+    var otherTransportCheck = document.getElementById('isTravelWithOtherVehicle');
+    var otherTransportExpenses = document.getElementById('otherTransportExpenses');
 
     if (radio.value === 'true') {
         toggleRequiredVehFields();
         vehPanel.style.display = 'block'; // Show Div 1
         otherTransportPanel.style.display = 'none'; // hide Div 2
+        otherTransportSection.style.display = 'none';
+        otherTransportCheck.checked = true;
+        otherTransportExpenses.value = '';
+        otherTransportExpenses.required = false;
     } else {
         vehPanel.style.display = 'none'; // Hide Div 1
-        otherTransportPanel.style.display = 'block'; // show Div 2
+        otherTransportPanel.style.display = 'none'; // show Div 2
+        otherTransportSection.style.display = 'block';
         toggleNotRequiredVehFields();
         clearVehPanelData();
     }
