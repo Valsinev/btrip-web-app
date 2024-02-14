@@ -20,12 +20,22 @@
 </head>
 
 
-<body class="container-fluid bg-secondary">
+<body class="bg-secondary">
     <!--NAVBAR-->
-    <nav class="row navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="col-xl-10 col-lg-6 col-md-4 col-sm-4 navbar-brand text-light" href="/">Начало</a>
-        <a class="btn col-1 nav-link text-light m-3" type="button" data-bs-toggle="modal" data-bs-target="#information-modal">Информация</a>
-        <a class="btn col-1 nav-link text-warning" type="button" data-bs-toggle="modal" data-bs-target="#contacts-modal">Контакти</a>
+    <nav class="navbar navbar-expand navbar-light bg-dark">
+        <div class="container-fluid">
+            <a class="col-xl-10 col-lg-6 col-md-4 col-sm-4 navbar-brand text-light" href="/">Начало</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn nav-link text-light" type="button" data-bs-toggle="modal"
+                        data-bs-target="#information-modal">Информация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn nav-link text-warning" type="button" data-bs-toggle="modal"
+                        data-bs-target="#contacts-modal">Контакти</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <!-- end NAVBAR-->
     <main class="container-fluid text-bg-secondary" id="content">
@@ -36,7 +46,7 @@
 
                     <div class="row">
 
-                        <section class="col-xl-4 col-lg-6 col-md-12" id="form-left-section">
+                        <section class="col-xl-4 col-lg-12 mt-2" id="form-left-section">
 
                             <section class="container-fluid" id="commonFields-div">
                                 <section class="row mb-3 box text-bg-secondary" id="common-fields-div">
@@ -63,21 +73,43 @@
                                         <input type="text" th:field="*{branchIn}" class="form-control" id="branchIn">
                                     </div>
 
-                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="month-div">
-                                        <label for="monthNumber" class="form-label">Месец:</label>
-                                        <select id="monthNumber" name="month" th:field="*{monthNumber}">
-                                            <option th:each="month : ${#numbers.sequence(1, 12)}" th:value="${month}"
-                                                th:text="${month}"></option>
-                                        </select>
+                                    <div class="col-6">
+                                        <div class="container-fluid pt-3">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <label for="monthNumber" class="form-label">Месец:
+                                                        <select
+                                                            class="form-select form-select-indicator-color-warning"
+                                                            id="monthNumber" name="month" th:field="*{monthNumber}">
+                                                            <option th:each="month : ${#numbers.sequence(1, 12)}"
+                                                                th:value="${month}" th:text="${month}"></option>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="whatYear" class="form-label">Година:
+                                                        <select class="form-select" id="whatYear" name="year"
+                                                            th:field="*{whatYear}">
+                                                            <option th:each="year : ${#numbers.sequence(2024, 2034)}"
+                                                                th:value="${year}" th:text="${year}"></option>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="year-div">
-                                        <label for="whatYear" class="form-label">Година:</label>
-                                        <select id="whatYear" name="year" th:field="*{whatYear}">
-                                            <option th:each="year : ${#numbers.sequence(2024, 2034)}" th:value="${year}"
-                                                th:text="${year}"></option>
-                                        </select>
+                                    <div class="col pt-3">
+                                        <label for="numberOfDays" class="form-label">Дни:
+                                            <select class="form-select" id="numberOfDays" name="day"
+                                                th:field="*{numberOfDays}">
+                                                <option
+                                                    th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}"
+                                                    th:value="${day}" th:text="${day}"></option>
+                                            </select>
+                                        </label>
                                     </div>
+                                    
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="start-city-div">
                                         <label for="startCity" class="form-label">Начален Град:</label>
@@ -96,7 +128,7 @@
                                             (*):</label>
                                         <input type="number" th:field="*{tripNumberThisMonth}" class="form-control"
                                             id="tripNumberThisMonth" min="1" max="31" value="1" required>
-                                            <div class="invalid-feedback">Моля попълнете.</div>
+                                        <div class="invalid-feedback">Моля попълнете.</div>
                                     </div>
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="head-employer-div">
@@ -108,16 +140,6 @@
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="reason-div">
                                         <label for="reason" class="form-label">Причина:</label>
                                         <input type="text" th:field="*{reason}" class="form-control" id="reason">
-                                    </div>
-
-                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="days-div">
-                                        <label for="numberOfDays" class="form-label">За Колко Дни:</label>
-                                        <select class="form-select-lg" id="numberOfDays" name="day"
-                                            th:field="*{numberOfDays}">
-                                            <option
-                                                th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}"
-                                                th:value="${day}" th:text="${day}"></option>
-                                        </select>
                                     </div>
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="add-expenses-div">
@@ -139,9 +161,9 @@
                             </section>
                         </section>
 
-                        <section class="col-xl-4 col-lg-6 col-md-12" id="form-center-section">
+                        <section class="col-xl-4 col-lg-6 col-md-12 mt-2 " id="form-center-section">
 
-                            <section class="container" id="transport-section">
+                            <section class="container pt-2" id="transport-section">
                                 <section class="row" id="vehicle-radio-div">
                                     <h2>Пътуване с Ваше Превозно Средство?</h2>
                                     <div class="col-2">
@@ -165,7 +187,7 @@
 
                                 <section class="row" id="other-transport-section">
 
-                                    <div class="container-fluid">
+                                    <div class="container">
                                         <div class="row">
                                             <h2>Други Транспортни Разходи?</h2>
                                             <div class="col-2">
@@ -175,7 +197,6 @@
                                                         id="isTravelWithOtherTransport"
                                                         onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"
                                                         th:field="*{isTravelWithOtherTransport}" th:value="true">
-
                                                 </label>
                                             </div>
                                             <div class="col-10">
@@ -186,8 +207,10 @@
                                                         th:field="*{isTravelWithOtherTransport}" th:value="false">
                                                 </label>
                                             </div>
+
                                         </div>
                                     </div>
+
                                 </section>
 
                                 <section class="row">
@@ -206,52 +229,51 @@
                                             <div class="container-fluid" id="vehicle-panel-div">
                                                 <div class="row">
 
-                                                    <div id="veh-make-div" class="col-6 p-3">
+                                                    <div id="veh-make-div" class="col-4 p-3">
                                                         <label for="make" class="form-label">Марка:</label>
                                                         <input type="text" th:field="*{make}" class="form-control"
                                                             id="make">
                                                     </div>
 
-                                                    <div id="veh-model-div" class="col-6 p-3">
+                                                    <div id="veh-model-div" class="col-4 p-3">
                                                         <label for="model" class="form-label">Модел:</label>
                                                         <input type="text" th:field="*{model}" class="form-control"
                                                             id="model">
                                                     </div>
 
-                                                    <div id="veh-category-div" class="col-6 p-3">
+                                                    <div id="veh-category-div" class="col-4 p-3">
                                                         <label for="category" class="form-label">Категория:</label>
                                                         <input type="text" th:field="*{category}" class="form-control"
                                                             id="category">
                                                     </div>
 
-                                                    <div id="veh-regN-div" class="col-6 p-3">
-                                                        <label for="regNumber" class="form-label">Регистрационен
-                                                            номер:</label>
+                                                    <div id="veh-regN-div" class="col-4 p-3">
+                                                        <label for="regNumber" class="form-label">Рег. номер:</label>
                                                         <input type="text" th:field="*{registrationNumber}"
                                                             class="form-control" id="regNumber">
                                                     </div>
 
-                                                    <div id="veh-costBy100-div" class="col-6 p-3">
+                                                    <div id="veh-costBy100-div" class="col-4 p-3">
                                                         <label for="costBy100" class="form-label">Разход за 100km
                                                             (*):</label>
                                                         <input type="number" th:field="*{costBy100}"
                                                             class="form-control" id="costBy100" min="0">
                                                     </div>
 
-                                                    <div id="veh-fuelType-div" class="col-6 p-3">
+                                                    <div id="veh-fuelType-div" class="col-4 p-3">
                                                         <label for="fuelType" class="form-label">Тип На Гориво:</label>
                                                         <input type="text" th:field="*{fuelType}" class="form-control"
                                                             id="fuelType">
                                                     </div>
 
-                                                    <div id="veh-fuelPrice-div" class="col-6 p-3">
+                                                    <div id="veh-fuelPrice-div" class="col-4 p-3">
                                                         <label for="fuelPrice" class="form-label">Цена На Литър
                                                             (*):</label>
                                                         <input type="number" th:field="*{fuelPrice}" step="0.01"
                                                             min="0.01" max="100.00" class="form-control" id="fuelPrice">
                                                     </div>
 
-                                                    <div id="veh-kilometers-div" class="col-6 p-3">
+                                                    <div id="veh-kilometers-div" class="col-4 p-3">
                                                         <label for="kilometers" class="form-label">Километри(общо)
                                                             (*):</label>
                                                         <input type="number" th:field="*{kilometers}"
@@ -265,283 +287,292 @@
                             </section>
                         </section>
 
-                        <section class="col-xl-4 col-lg-6 col-md-12" id="form-right-section">
+                        <section class="col-xl-4 col-lg-6 col-md-12 mt-2" id="form-right-section">
 
                             <div class="row">
-                                <div id="nightStay-div" class="container-fluid mb-3 box text-bg-secondary">
-                                    <section class="row" id="nightStay-radio-div">
-                                        <h3 id="daysLabel">С Нощувка?</h3>
-                                        <div class="col-2">
+                                <div class="container">
+                                    <section class="row">
+                                        <div class="container">
+                                            <h3 id="daysLabel">С Нощувка?</h3>
+
                                             <input type="radio" th:field="*{isNightStayedInHotel}" th:value="false"
                                                 value="false" name="nightPanel" id="show-month-panel"
                                                 onclick="showHideNightStayPanelDiv(this)" checked>
                                             <label for="show-month-panel">Не</label>
-                                        </div>
-                                        <div class="col-2">
+
                                             <input type="radio" th:field="*{isNightStayedInHotel}" th:value="true"
                                                 value="true" name="nightPanel" id="show-night-panel"
                                                 onclick="showHideNightStayPanelDiv(this)">
                                             <label for="show-night-panel">Да</label>
+
                                         </div>
                                     </section>
 
-                                    <section class="row mb-3 box text-bg-secondary" id="hotel-panel-container ">
-                                        <div id="hotel-panel-div" class="container-fluid  mb-3 box text-bg-secondary"
-                                            style="display: none;">
-                                            <div class="row" id="hotel-fields-container">
+                                    <section class="row" id="hotel-panel-container ">
+                                        <div id="hotel-panel-div" class="col-12" style="display: none;">
+                                            <div class="container">
+                                                <div class="row" id="hotel-fields-container">
 
-                                                <div class="col-6 p-3">
-                                                    <label for="nightStayPrice" class="form-label">Цена За Нощувка
-                                                        (*):</label>
-                                                    <input type="number" th:field="*{nightStayPrice}"
-                                                        class="form-control" id="nightStayPrice" min="0">
-                                                </div>
-
-                                                <div class="col-6 p-3">
-                                                    <label for="numberOfNightsStayed" class="form-label"
-                                                        id="numberOfNightsLabel">Брой Нощувки:</label>
-                                                    <select id="numberOfNightsStayed" name="day"
-                                                        th:field="*{numberOfNightsStayed}">
-                                                        <option
-                                                            th:each="day : ${#numbers.sequence(new java.math.BigDecimal('0'), new java.math.BigDecimal('31'))}"
-                                                            th:value="${day}" th:text="${day}"></option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-6 p-3">
-                                                    <label for="fromWhichDayField" class="form-label">От кой
-                                                        Ден:</label>
-                                                    <select id="fromWhichDayField" name="day"
-                                                        th:field="*{fromWhichDayField}">
-                                                        <option th:each="day : ${#numbers.sequence(1, 31)}"
-                                                            th:value="${day}" th:text="${day}"></option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-6 p-3">
-                                                    <label for="toWhichDayField" class="form-label">До Кой Ден:</label>
-                                                    <select id="toWhichDayField" name="day"
-                                                        th:field="*{toWhichDayField}">
-                                                        <option th:each="day : ${#numbers.sequence(1, 31)}"
-                                                            th:value="${day}" th:text="${day}"></option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col6 p-3" id="is-travel-first-last-day">
-                                                    <div class="form-check mb-3 box text-bg-secondary"
-                                                        id="is-travel-first-day">
-                                                        <input class="" th:field="*{isTravelOnFirstDay}" type="checkbox"
-                                                            id="isTravelOnFirstDay">
-                                                        <label class="form-check-label"
-                                                            for="isTravelOnFirstDay">Пътуване Първа Дата?</label>
+                                                    <div class="col-2 mt-2">
+                                                        <label for="nightStayPrice" class="form-label">Цена За Нощувка
+                                                            (*):</label>
+                                                        <input type="number" th:field="*{nightStayPrice}"
+                                                            class="form-control" id="nightStayPrice" min="0">
                                                     </div>
-                                                    <div class="form-check mb-3 box text-bg-secondary"
-                                                        id="is-travel-last-day">
-                                                        <input class="" th:field="*{isTravelOnLastDay}" type="checkbox"
-                                                            id="isTravelOnLastDay">
-                                                        <label class="form-check-label" for="isTravelOnLastDay">Пътуване
-                                                            Последна Дата?</label>
+
+                                                    <div class="col-12 mt-2">
+                                                        <label for="numberOfNightsStayed" class="form-label"
+                                                            id="numberOfNightsLabel">Брой Нощувки:
+                                                            <select class="form-select-lg" id="numberOfNightsStayed"
+                                                                name="day" th:field="*{numberOfNightsStayed}">
+                                                                <option
+                                                                    th:each="day : ${#numbers.sequence(new java.math.BigDecimal('0'), new java.math.BigDecimal('31'))}"
+                                                                    th:value="${day}" th:text="${day}"></option>
+                                                            </select>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="col-12 mt-2">
+                                                        <label for="fromWhichDayField" class="form-label">От Kой Ден:
+                                                            <select class="form-select-lg" id="fromWhichDayField"
+                                                                name="day" th:field="*{fromWhichDayField}">
+                                                                <option th:each="day : ${#numbers.sequence(1, 31)}"
+                                                                    th:value="${day}" th:text="${day}"></option>
+                                                            </select>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="col-12 mt-2">
+                                                        <label for="toWhichDayField" class="form-label">До Кой Ден:
+                                                            <select class="form-select-lg" id="toWhichDayField"
+                                                                name="day" th:field="*{toWhichDayField}">
+                                                                <option th:each="day : ${#numbers.sequence(1, 31)}"
+                                                                    th:value="${day}" th:text="${day}"></option>
+                                                            </select>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="col-12" id="is-travel-first-last-day">
+                                                        <div class="form-check mb-3 box text-bg-secondary"
+                                                            id="is-travel-first-day">
+                                                            <input class="" th:field="*{isTravelOnFirstDay}"
+                                                                type="checkbox" id="isTravelOnFirstDay">
+                                                            <label class="form-check-label"
+                                                                for="isTravelOnFirstDay">Пътуване Първа Дата?</label>
+                                                        </div>
+                                                        <div class="form-check mb-3 box text-bg-secondary"
+                                                            id="is-travel-last-day">
+                                                            <input class="" th:field="*{isTravelOnLastDay}"
+                                                                type="checkbox" id="isTravelOnLastDay">
+                                                            <label class="form-check-label"
+                                                                for="isTravelOnLastDay">Пътуване
+                                                                Последна Дата?</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                        <div class="container-fluid mb-3 box text-bg-secondary" id="month-panel-div">
-                                            <fieldset class="row" id="month-container">
-                                                <legend>Изберете Дните В Командировка</legend>
+                                        <div class="col-12 text-bg-secondary" id="month-panel-div">
+                                            <div class="container-fluid">
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day1">Ден 1</label>
-                                                    <input type="checkbox" th:field="*{day1}" id="day1"
-                                                        name="selectedDays">
-                                                </div>
+                                                <fieldset class="row" id="month-container">
+                                                    <legend>Изберете Дните В Командировка</legend>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day2">Ден 2</label>
-                                                    <input type="checkbox" th:field="*{day2}" id="day2"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day1">Ден 1 </label>
+                                                        <input type="checkbox" th:field="*{day1}" id="day1"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day3">Ден 3</label>
-                                                    <input type="checkbox" th:field="*{day3}" id="day3"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day2">Ден 2 </label>
+                                                        <input type="checkbox" th:field="*{day2}" id="day2"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day4">Ден 4</label>
-                                                    <input type="checkbox" th:field="*{day4}" id="day4"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day3">Ден 3 </label>
+                                                        <input type="checkbox" th:field="*{day3}" id="day3"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day5">Ден 5</label>
-                                                    <input type="checkbox" th:field="*{day5}" id="day5"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day4">Ден 4 </label>
+                                                        <input type="checkbox" th:field="*{day4}" id="day4"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day6">Ден 6</label>
-                                                    <input type="checkbox" th:field="*{day6}" id="day6"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day5">Ден 5 </label>
+                                                        <input type="checkbox" th:field="*{day5}" id="day5"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day7">Ден 7</label>
-                                                    <input type="checkbox" th:field="*{day7}" id="day7"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day6">Ден 6 </label>
+                                                        <input type="checkbox" th:field="*{day6}" id="day6"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day8">Ден 8</label>
-                                                    <input type="checkbox" th:field="*{day8}" id="day8"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day7">Ден 7 </label>
+                                                        <input type="checkbox" th:field="*{day7}" id="day7"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day9">Ден 9</label>
-                                                    <input type="checkbox" th:field="*{day9}" id="day9"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day8">Ден 8 </label>
+                                                        <input type="checkbox" th:field="*{day8}" id="day8"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day10">Ден 10</label>
-                                                    <input type="checkbox" th:field="*{day10}" id="day10"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day9">Ден 9 </label>
+                                                        <input type="checkbox" th:field="*{day9}" id="day9"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day11">Ден 11</label>
-                                                    <input type="checkbox" th:field="*{day11}" id="day11"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day10">Ден 10</label>
+                                                        <input type="checkbox" th:field="*{day10}" id="day10"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day12">Ден 12</label>
-                                                    <input type="checkbox" th:field="*{day12}" id="day12"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day11">Ден 11</label>
+                                                        <input type="checkbox" th:field="*{day11}" id="day11"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day13">Ден 13</label>
-                                                    <input type="checkbox" th:field="*{day13}" id="day13"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day12">Ден 12</label>
+                                                        <input type="checkbox" th:field="*{day12}" id="day12"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day14">Ден 14</label>
-                                                    <input type="checkbox" th:field="*{day14}" id="day14"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day13">Ден 13</label>
+                                                        <input type="checkbox" th:field="*{day13}" id="day13"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day15">Ден 15</label>
-                                                    <input type="checkbox" th:field="*{day15}" id="day15"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day14">Ден 14</label>
+                                                        <input type="checkbox" th:field="*{day14}" id="day14"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day16">Ден 16</label>
-                                                    <input type="checkbox" th:field="*{day16}" id="day16"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day15">Ден 15</label>
+                                                        <input type="checkbox" th:field="*{day15}" id="day15"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day17">Ден 17</label>
-                                                    <input type="checkbox" th:field="*{day17}" id="day17"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day16">Ден 16</label>
+                                                        <input type="checkbox" th:field="*{day16}" id="day16"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day18">Ден 18</label>
-                                                    <input type="checkbox" th:field="*{day18}" id="day18"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day17">Ден 17</label>
+                                                        <input type="checkbox" th:field="*{day17}" id="day17"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day19">Ден 19</label>
-                                                    <input type="checkbox" th:field="*{day19}" id="day19"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day18">Ден 18</label>
+                                                        <input type="checkbox" th:field="*{day18}" id="day18"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day20">Ден 20</label>
-                                                    <input type="checkbox" th:field="*{day20}" id="day20"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day19">Ден 19</label>
+                                                        <input type="checkbox" th:field="*{day19}" id="day19"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day21">Ден 21</label>
-                                                    <input type="checkbox" th:field="*{day21}" id="day21"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day20">Ден 20</label>
+                                                        <input type="checkbox" th:field="*{day20}" id="day20"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day22">Ден 22</label>
-                                                    <input type="checkbox" th:field="*{day22}" id="day22"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day21">Ден 21</label>
+                                                        <input type="checkbox" th:field="*{day21}" id="day21"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day23">Ден 23</label>
-                                                    <input type="checkbox" th:field="*{day23}" id="day23"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day22">Ден 22</label>
+                                                        <input type="checkbox" th:field="*{day22}" id="day22"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day24">Ден 24</label>
-                                                    <input type="checkbox" th:field="*{day24}" id="day24"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day23">Ден 23</label>
+                                                        <input type="checkbox" th:field="*{day23}" id="day23"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day25">Ден 25</label>
-                                                    <input type="checkbox" th:field="*{day25}" id="day25"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day24">Ден 24</label>
+                                                        <input type="checkbox" th:field="*{day24}" id="day24"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day26">Ден 26</label>
-                                                    <input type="checkbox" th:field="*{day26}" id="day26"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day25">Ден 25</label>
+                                                        <input type="checkbox" th:field="*{day25}" id="day25"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day27">Ден 27</label>
-                                                    <input type="checkbox" th:field="*{day27}" id="day27"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day26">Ден 26</label>
+                                                        <input type="checkbox" th:field="*{day26}" id="day26"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day28">Ден 28</label>
-                                                    <input type="checkbox" th:field="*{day28}" id="day28"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day27">Ден 27</label>
+                                                        <input type="checkbox" th:field="*{day27}" id="day27"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day29">Ден 29</label>
-                                                    <input type="checkbox" th:field="*{day29}" id="day29"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day28">Ден 28</label>
+                                                        <input type="checkbox" th:field="*{day28}" id="day28"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day30">Ден 30</label>
-                                                    <input type="checkbox" th:field="*{day30}" id="day30"
-                                                        name="selectedDays">
-                                                </div>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day29">Ден 29</label>
+                                                        <input type="checkbox" th:field="*{day29}" id="day29"
+                                                            name="selectedDays">
+                                                    </div>
 
-                                                <div class="col-2 day-box">
-                                                    <label for="day31">Ден 31</label>
-                                                    <input type="checkbox" th:field="*{day31}" id="day31"
-                                                        name="selectedDays">
-                                                </div>
-                                            </fieldset>
+                                                    <div class="col-2 day-box m-2">
+                                                        <label for="day30">Ден 30</label>
+                                                        <input type="checkbox" th:field="*{day30}" id="day30"
+                                                            name="selectedDays">
+                                                    </div>
+
+                                                    <div class="col-2 day-box m-2 mt-2">
+                                                        <label for="day31">Ден 31</label>
+                                                        <input type="checkbox" th:field="*{day31}" id="day31"
+                                                            name="selectedDays">
+                                                    </div>
+                                                </fieldset>
+                                            </div>
                                         </div>
                                     </section>
                                 </div>
                             </div>
                         </section>
                     </div>
-                    <div class="row ">
+                    <div class="row mt-3">
                         <button id="submit-button" type="submit" class="col-6 offset-6 btn btn-warning text-dark">
                             Попълни</button>
                     </div>
@@ -566,10 +597,11 @@
                             <div class="modal-content bg-secondary border-warning p-3">
                                 <div class="modal-header">
                                     <h3>Контакти:</h3>
-                                    <button class="btn-close bg-warning" type="button" data-bs-dismiss="modal" data-bs-target="#contacts-modal"></button>
+                                    <button class="btn-close bg-warning" type="button" data-bs-dismiss="modal"
+                                        data-bs-target="#contacts-modal"></button>
                                 </div>
                                 <p class="mt-3">За бъгове/грешки може да пишете на:</p>
-                                <a class="text-warning">valsinev@abv.bg</a>
+                                <a class="text-warning">komandirovka@abv.bg</a>
                             </div>
                         </div>
                     </div>
@@ -581,7 +613,8 @@
                             <div class="modal-content bg-secondary border-warning p-3">
                                 <div class="modal-header">
                                     <h3>Информация:</h3>
-                                    <button class="btn-close bg-warning" type="button" data-bs-dismiss="modal" data-bs-target="#information-modal"></button>
+                                    <button class="btn-close bg-warning" type="button" data-bs-dismiss="modal"
+                                        data-bs-target="#information-modal"></button>
                                 </div>
                                 <p class="mt-3">Здравейте, този сайт е направен за хоби и упражнение.</p>
                                 <p>Не покрива всички възможни случаи, възможни са бъгове/грешки.</p>
