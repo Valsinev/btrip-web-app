@@ -1,3 +1,22 @@
+document.getElementById("submit-button").onclick = function(event) {
+    // Custom function to execute before form submission
+    var form = document.getElementById('tripForm');
+    if(validateBusinessTrip(event.target)) {
+        if (form.checkValidity()) {
+            // If the form is valid, show the modal
+            $('#loading-modal').modal('show');
+        } else {
+            // If the form is not valid, do not show the modal
+            // You can add additional logic here, such as displaying an error message
+            console.log("Form validation failed");
+        }
+    }
+    // You can add any additional functions or logic here
+
+    // If you want to submit the form programmatically, you can call the submit() method on the form element
+    // document.getElementById("myForm").submit();
+};
+
 
 function validateBusinessTrip(event) {
 
@@ -13,8 +32,12 @@ function validateBusinessTrip(event) {
             alert("Броят дни не съответства на посочените!");
             event.preventDefault(); // Prevent form submission
         }
+        else {
+            return true;
+        }
     }
 }
+
 
 
 function showHideNightStayPanelDiv(radio) {

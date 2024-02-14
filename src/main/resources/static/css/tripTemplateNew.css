@@ -160,7 +160,7 @@ label {
     animation: loadingspinner .7s linear infinite;
 }
 
-#btn {
+#submit-button {
     height: 70px;
 }
 
