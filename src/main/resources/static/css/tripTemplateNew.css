@@ -109,12 +109,22 @@ label {
 }
 
 #loading-modal {
-    position: fixed;
+    /* position: fixed;
     margin-top: 5%;
     display: none;
     width: 40%;
     margin-left: 30%;
-    margin-right: 30%;
+    margin-right: 30%; */
+
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-height: 500px;
+    max-width: 600px;
+    min-width: 300px;
+    position: fixed;
+    right: 0;
+    top: 0;
 }
 
 
