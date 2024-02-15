@@ -1,15 +1,13 @@
-document.getElementById("submit-button").onclick = function(event) {
+document.getElementById("submit-button").onclick = function (event) {
     // Custom function to execute before form submission
     var form = document.getElementById('tripForm');
-    if(validateBusinessTrip(event.target)) {
-        if (form.checkValidity()) {
-            // If the form is valid, show the modal
-            $('#loading-modal').modal('show');
-        } else {
-            // If the form is not valid, do not show the modal
-            // You can add additional logic here, such as displaying an error message
-            console.log("Form validation failed");
-        }
+    if (validateBusinessTrip(event) && form.checkValidity()) {
+        // If the form is valid, show the modal
+        showLoadingModal();
+    } else {
+        // If the form is not valid, do not show the modal
+        // You can add additional logic here, such as displaying an error message
+        console.log("Form validation failed");
     }
     // You can add any additional functions or logic here
 
@@ -18,19 +16,38 @@ document.getElementById("submit-button").onclick = function(event) {
 };
 
 
+
+
 function validateBusinessTrip(event) {
 
-    var radio = document.getElementById("show-month-panel");
-    if (radio.checked) {
+    var monthPanel = document.getElementById("show-month-panel");
+    var hotelPanel = document.getElementById("show-night-panel");
+    var numDaysInput = document.getElementById('numberOfDays');
+    var numDays = parseInt(numDaysInput.value);
+    if (hotelPanel.checked) {
+        var fromWhichDayField = document.getElementById('fromWhichDayField');
+        var toWhichDayField = document.getElementById('toWhichDayField');
+
+        var fromDay = parseInt(fromWhichDayField.value);
+        var toDay = parseInt(toWhichDayField.value);
+
+        if (toDay - fromDay + 1 === numDays) {
+            return true;
+        } else {
+            showSelectedDaysAlert();
+            event.preventDefault();
+            return false;
+        }
+    }
+    if (monthPanel.checked) {
         // Get the input field value
-        var numDaysInput = document.getElementById('numberOfDays');
-        var numDays = parseInt(numDaysInput.value);
         // Get the selected checkboxes
         var checkboxes = document.querySelectorAll('.day-box input[type="checkbox"]:checked');
         // Check if the number of selected checkboxes matches the input value
         if (checkboxes.length !== numDays) {
-            alert("Броят дни не съответства на посочените!");
+            showSelectedDaysAlert();
             event.preventDefault(); // Prevent form submission
+            return false;
         }
         else {
             return true;
@@ -43,6 +60,9 @@ function validateBusinessTrip(event) {
 function showHideNightStayPanelDiv(radio) {
     var hotelDiv = document.getElementById('hotel-panel-div');
     var monthDiv = document.getElementById('month-panel-div');
+    var nightStayPrice = document.getElementById('nightstay-price-input');
+    var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
+    var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
 
     if (radio.value === 'false') {
         nightFieldsNotRequired();
@@ -137,10 +157,6 @@ function showHideNightStayPanelDiv(radio) {
 
 
     function clearNightStayPanelData() {
-        var nightStayPrice = document.getElementById('nightStayPrice');
-        var isTravelOnFirstDay = document.getElementById('isTravelOnFirstDay');
-        var isTravelOnLastDay = document.getElementById('isTravelOnLastDay');
-
         nightStayPrice.value = 0;
         isTravelOnFirstDay.checked = false;
         isTravelOnLastDay.checked = false;
@@ -149,7 +165,7 @@ function showHideNightStayPanelDiv(radio) {
 
 function showHideOtherTransportExpenses(radio) {
     var otherTransportPanel = document.getElementById('other-transport-div');
-    var otherTransportExpenses = document.getElementById('otherTransportExpenses');
+    var otherTransportExpenses = document.getElementById('other-transport-input');
 
     if (radio.value === 'true') {
         otherTransportPanel.style.display = 'block';
@@ -176,10 +192,10 @@ function showHideIsTravelOnFirstLastDay(radio) {
     }
 }
 
-    function redirectToPage() {
-        // You can change 'destination.html' to the URL of the page you want to redirect to
-        window.location.href = '/';
-    }
+function redirectToPage() {
+    // You can change 'destination.html' to the URL of the page you want to redirect to
+    window.location.href = '/';
+}
 
 
 function showHideVehPanelDiv(radio) {
@@ -187,7 +203,7 @@ function showHideVehPanelDiv(radio) {
     var otherTransportPanel = document.getElementById('other-transport-div');
     var otherTransportSection = document.getElementById('other-transport-section');
     var otherTransportCheck = document.getElementById('isTravelWithOtherVehicle');
-    var otherTransportExpenses = document.getElementById('otherTransportExpenses');
+    var otherTransportExpenses = document.getElementById('other-transport-input');
 
     if (radio.value === 'true') {
         toggleRequiredVehFields();
@@ -236,4 +252,32 @@ function showHideVehPanelDiv(radio) {
         fuelPrice.value = '';
         kilometers.value = '';
     }
+}
+
+
+function showSelectedDaysAlert() {
+    var alertDiv = document.getElementById('selected-days-alert');
+    alertDiv.style.display = 'block'; // Set the display style to 'block' to make it visible
+
+    // // Move the alert div to the top of the document body
+    document.body.insertBefore(alertDiv, document.body.firstChild);
+    
+    // Scroll the alert div into view
+    alertDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function hideSelectedDaysAlert() {
+    var alertDiv = document.getElementById('selected-days-alert');
+    alertDiv.style.display = 'none'; // Hide the alert
+}
+
+function showLoadingModal() {
+    var modal = document.getElementById('loading-modal');
+    $(modal).modal('show'); // Show the modal
+
+    // Set focus to the modal
+    modal.focus();
+
+    // Scroll the modal into view
+    modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
