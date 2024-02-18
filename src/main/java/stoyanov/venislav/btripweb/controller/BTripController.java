@@ -31,6 +31,11 @@ public class BTripController {
         return "tripTemplateNew";
     }
 
+    @GetMapping("/downloads")
+    public String showDownloadPage() {
+        return "downloads";
+    }
+
     @PostMapping("/showImages")
     public String submitTrip(@Valid @ModelAttribute("bTrip") BTrip bTrip, Model model, BindingResult bindingResult) {
 
