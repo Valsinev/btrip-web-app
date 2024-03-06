@@ -177,10 +177,6 @@ function showHideNightStayPanelDiv(radio) {
 //    }
 //}
 
-        document.getElementById('colorInput').addEventListener('change', function() {
-            var colorInputHidden = document.getElementById('colorInputHidden');
-            colorInputHidden.value = this.value; // Update hidden input value with color picker value
-        });
 
 function showHideIsTravelOnFirstLastDay(radio) {
     var isTravelOnFirstLastDay = document.getElementById('is-travel-first-last-day');

@@ -661,5 +661,10 @@
         </div>
     </main>
     <script th:src="@{/scripts/tripTemplate.js}"></script>
-
+<script>
+    document.getElementById('colorInput').addEventListener('change', function() {
+        var colorInputHidden = document.getElementById('colorInputHidden');
+        colorInputHidden.value = this.value; // Update hidden input value with color picker value
+    });
+</script>
 </body>
