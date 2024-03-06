@@ -44,7 +44,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
 	implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.1.0-M1'
 
-	implementation files('libs/b-trip-lib-1.jar')
+	implementation files('libs/b-trip-lib-4.jar')
 }
 
 tasks.named('test') {

@@ -3,7 +3,7 @@ package stoyanov.venislav.btripweb.model;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.example.engine.BusinessTripForm;
+import org.example.configuration.BusinessTripForm;
 import org.example.utillity.BTripGetDaysFromCheckboxesOrFields;
 
 import java.math.BigDecimal;
@@ -412,6 +412,11 @@ public class BTrip implements BusinessTripForm {
     @Override
     public boolean getDay31() {
         return day31;
+    }
+
+    @Override
+    public String getDificulties() {
+        return "не срещнах";
     }
 
     public void setOtherTransportExpenses(BigDecimal otherTransportExpenses) {

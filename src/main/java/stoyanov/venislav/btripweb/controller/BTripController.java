@@ -9,8 +9,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import stoyanov.venislav.btripweb.configuration.Configuration;
+import stoyanov.venislav.btripweb.configuration.OrderAdditionalDaysCoordinates;
+import stoyanov.venislav.btripweb.configuration.OrderTextCoordinates;
+import stoyanov.venislav.btripweb.configuration.TravelListTextCoordinates;
 import stoyanov.venislav.btripweb.model.BTrip;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -27,6 +33,7 @@ public class BTripController {
     @GetMapping("/")
     public String showTripForm(Model model) {
         model.addAttribute("bTrip", new BTrip());
+        model.addAttribute("fontColor", "#161616");
         //return "tripTemplate";
         return "tripTemplateNew";
     }
@@ -37,9 +44,8 @@ public class BTripController {
     }
 
     @PostMapping("/showImages")
-    public String submitTrip(@Valid @ModelAttribute("bTrip") BTrip bTrip, Model model, BindingResult bindingResult) {
+    public String submitTrip(@Valid @ModelAttribute("bTrip") BTrip bTrip, Model model, BindingResult bindingResult, @RequestParam("colorInput") String fontColor) {
 
-        System.out.println(bindingResult.toString());
         //validation of model class fields
         if (bindingResult.hasErrors()) {
             //return "tripTemplate";
@@ -59,7 +65,10 @@ public class BTripController {
             //end the validation section
 
             List<BufferedImage> imageList = new ArrayList<>();
-            TripTypeSelector.select(bTrip, imageList);
+            TripTypeSelector tripTypeSelector = new TripTypeSelector(new OrderTextCoordinates(), new OrderAdditionalDaysCoordinates(), new TravelListTextCoordinates());
+            Configuration configuration = new Configuration();
+            configuration.setFontColor(Color.decode(fontColor));
+            tripTypeSelector.select(bTrip, imageList, configuration);
             // Convert each image to Base64
             List<String> base64ImageList = imageList.stream()
                     .map(image -> {

@@ -48,6 +48,14 @@
             <form th:action="@{/showImages}" method="post" th:object="${bTrip}" id="tripForm">
                 <fieldset class="container-fluid">
 
+                    <!-- Color picker input -->
+                    <label for="colorInput" class="form-label">Цвят на текста:</label>
+                    <input type="color" class="form-control form-control-color" id="colorInput" title="Choose your color">
+
+                    <!-- Hidden input field to capture font color -->
+                    <input type="hidden" id="colorInputHidden" name="colorInput" th:value="${fontColor}">
+
+
                     <div class="row">
 
                         <section class="col-xl-4 col-lg-12 mt-2" id="form-left-section">
@@ -145,13 +153,13 @@
                                         <input type="text" th:field="*{reason}" class="form-control" id="reason">
                                     </div>
 
-                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="add-expenses-div">
-                                        <label for="additionalExpenses" class="form-label">Допълнителни Разходи
-                                            (*):</label>
-                                        <input type="number" th:field="*{additionalExpenses}" step="0.01" min="0.00"
-                                            max="10000.00" class="form-control" id="additionalExpenses"
-                                            aria-describedby="emailHelp" value="0" required>
-                                    </div>
+<!--                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="add-expenses-div">-->
+<!--                                        <label for="additionalExpenses" class="form-label">Допълнителни Разходи-->
+<!--                                            (*):</label>-->
+<!--                                        <input type="number" th:field="*{additionalExpenses}" step="0.01" min="0.00"-->
+<!--                                            max="10000.00" class="form-control" id="additionalExpenses"-->
+<!--                                            aria-describedby="emailHelp" value="0" required>-->
+<!--                                    </div>-->
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="number-documents-div">
                                         <label for="numberDocuments" class="form-label">Бр. Разходни
@@ -187,31 +195,31 @@
                                     </div>
                                 </section>
 
-                                <section class="row" id="other-transport-section">
+<!--                                <section class="row" id="other-transport-section">-->
 
-                                    <div class="container">
-                                        <div class="row">
-                                            <h2>Други Транспортни Разходи?</h2>
-                                            <div class="col-2">
-                                                <input type="radio" name="travelRadio" id="isTravelWithOtherTransport"
-                                                    onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"
-                                                    th:field="*{isTravelWithOtherTransport}" th:value="true">
-                                                <label for="isTravelWithOtherTransport">
-                                                    <h6>Да</h6>
-                                                </label>
-                                            </div>
-                                            <div class="col-10">
-                                                <input type="radio" name="travelRadio" id="isTravelWithOtherVehicle"
-                                                    onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"
-                                                    th:field="*{isTravelWithOtherTransport}" th:value="false">
-                                                <label for="isTravelWithOtherVehicle">
-                                                    <h6>Не</h6>
-                                                </label>
-                                            </div>
+<!--                                    <div class="container">-->
+<!--                                        <div class="row">-->
+<!--                                            <h2>Други Транспортни Разходи?</h2>-->
+<!--                                            <div class="col-2">-->
+<!--                                                <input type="radio" name="travelRadio" id="isTravelWithOtherTransport"-->
+<!--                                                    onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"-->
+<!--                                                    th:field="*{isTravelWithOtherTransport}" th:value="true">-->
+<!--                                                <label for="isTravelWithOtherTransport">-->
+<!--                                                    <h6>Да</h6>-->
+<!--                                                </label>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-10">-->
+<!--                                                <input type="radio" name="travelRadio" id="isTravelWithOtherVehicle"-->
+<!--                                                    onclick="showHideOtherTransportExpenses(this), showHideIsTravelOnFirstLastDay(this)"-->
+<!--                                                    th:field="*{isTravelWithOtherTransport}" th:value="false">-->
+<!--                                                <label for="isTravelWithOtherVehicle">-->
+<!--                                                    <h6>Не</h6>-->
+<!--                                                </label>-->
+<!--                                            </div>-->
 
-                                        </div>
-                                    </div>
-                                </section>
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </section>-->
                                 <section class="row">
                                     <div class="container">
                                         <div class="row">
@@ -239,14 +247,14 @@
                                 <section class="row">
                                     <div class="container-fluid">
 
-                                        <div class="row" id="other-transport-div">
-                                            <div class="col-6 p-3">
-                                                <label for="other-transport-input" class="form-label">Разходи За друг
-                                                    Транспорт:</label>
-                                                <input type="number" th:field="*{otherTransportExpenses}"
-                                                    class="form-control" id="other-transport-input" min="0">
-                                            </div>
-                                        </div>
+<!--                                        <div class="row" id="other-transport-div">-->
+<!--                                            <div class="col-6 p-3">-->
+<!--                                                <label for="other-transport-input" class="form-label">Разходи За друг-->
+<!--                                                    Транспорт:</label>-->
+<!--                                                <input type="number" th:field="*{otherTransportExpenses}"-->
+<!--                                                    class="form-control" id="other-transport-input" min="0">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
                                         <div class="row">
                                             <div class="container-fluid" id="vehicle-panel-div">
@@ -581,7 +589,7 @@
                         </section>
                     </div>
 
-                    <div class="row border-top border-bottom border-dark border-5 mt-3 pt-3 pb-3">
+                    <div class="row bg-dark  mt-3 pt-3 pb-3">
                         <div class="col">
                             <div class="container">
                                 <div class="row">
@@ -654,4 +662,10 @@
         </div>
     </main>
     <script th:src="@{/scripts/tripTemplate.js}"></script>
+<script>
+    document.getElementById('colorInput').addEventListener('change', function() {
+        var colorInputHidden = document.getElementById('colorInputHidden');
+        colorInputHidden.value = this.value; // Update hidden input value with color picker value
+    });
+</script>
 </body>
