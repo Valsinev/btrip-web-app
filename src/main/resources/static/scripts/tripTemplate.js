@@ -163,19 +163,24 @@ function showHideNightStayPanelDiv(radio) {
     }
 }
 
-function showHideOtherTransportExpenses(radio) {
-    var otherTransportPanel = document.getElementById('other-transport-div');
-    var otherTransportExpenses = document.getElementById('other-transport-input');
+//function showHideOtherTransportExpenses(radio) {
+//    var otherTransportPanel = document.getElementById('other-transport-div');
+//    var otherTransportExpenses = document.getElementById('other-transport-input');
+//
+//    if (radio.value === 'true') {
+//        otherTransportPanel.style.display = 'block';
+//        otherTransportExpenses.required = true;
+//    } else {
+//        otherTransportPanel.style.display = 'none';
+//        otherTransportExpenses.required = false;
+//        otherTransportExpenses.value = '';
+//    }
+//}
 
-    if (radio.value === 'true') {
-        otherTransportPanel.style.display = 'block';
-        otherTransportExpenses.required = true;
-    } else {
-        otherTransportPanel.style.display = 'none';
-        otherTransportExpenses.required = false;
-        otherTransportExpenses.value = '';
-    }
-}
+        document.getElementById('colorInput').addEventListener('change', function() {
+            var colorInputHidden = document.getElementById('colorInputHidden');
+            colorInputHidden.value = this.value; // Update hidden input value with color picker value
+        });
 
 function showHideIsTravelOnFirstLastDay(radio) {
     var isTravelOnFirstLastDay = document.getElementById('is-travel-first-last-day');
@@ -200,23 +205,23 @@ function redirectToPage() {
 
 function showHideVehPanelDiv(radio) {
     var vehPanel = document.getElementById('vehicle-panel-div');
-    var otherTransportPanel = document.getElementById('other-transport-div');
-    var otherTransportSection = document.getElementById('other-transport-section');
-    var otherTransportCheck = document.getElementById('isTravelWithOtherVehicle');
-    var otherTransportExpenses = document.getElementById('other-transport-input');
+//    var otherTransportPanel = document.getElementById('other-transport-div');
+//    var otherTransportSection = document.getElementById('other-transport-section');
+//    var otherTransportCheck = document.getElementById('isTravelWithOtherVehicle');
+//    var otherTransportExpenses = document.getElementById('other-transport-input');
 
     if (radio.value === 'true') {
         toggleRequiredVehFields();
         vehPanel.style.display = 'block'; // Show Div 1
-        otherTransportPanel.style.display = 'none'; // hide Div 2
-        otherTransportSection.style.display = 'none';
-        otherTransportCheck.checked = true;
-        otherTransportExpenses.value = '';
-        otherTransportExpenses.required = false;
+//        otherTransportPanel.style.display = 'none'; // hide Div 2
+//        otherTransportSection.style.display = 'none';
+//        otherTransportCheck.checked = true;
+//        otherTransportExpenses.value = '';
+//        otherTransportExpenses.required = false;
     } else {
         vehPanel.style.display = 'none'; // Hide Div 1
-        otherTransportPanel.style.display = 'none'; // show Div 2
-        otherTransportSection.style.display = 'block';
+//        otherTransportPanel.style.display = 'none'; // show Div 2
+//        otherTransportSection.style.display = 'block';
         toggleNotRequiredVehFields();
         clearVehPanelData();
     }
