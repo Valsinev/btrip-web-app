@@ -31,10 +31,10 @@
                     <a class="btn nav-link text-light" type="button" data-bs-toggle="modal"
                         data-bs-target="#information-modal">Информация</a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn nav-link text-light" type="button" data-bs-toggle="modal"
-                        data-bs-target="#contacts-modal">Контакти</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="btn nav-link text-light" type="button" data-bs-toggle="modal"-->
+<!--                        data-bs-target="#contacts-modal">Контакти</a>-->
+<!--                </li>-->
                 <li class="nav-item">
                     <a class="btn nav-link text-light" type="button" href="/downloads">Изтегляне</a>
                 </li>
@@ -69,15 +69,15 @@
                                         <input type="text" th:field="*{fullName}" class="form-control" id="fullName">
                                     </div>
 
+                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="position-div">
+                                        <label for="position" class="form-label">Позиция:</label>
+                                        <input type="text" th:field="*{position}" class="form-control" id="position">
+                                    </div>
+
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="pers-number-div">
                                         <label for="personalNumber" class="form-label">Персонален Номер:</label>
                                         <input type="text" th:field="*{personalNumber}" class="form-control"
                                             id="personalNumber">
-                                    </div>
-
-                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="position-div">
-                                        <label for="position" class="form-label">Позиция:</label>
-                                        <input type="text" th:field="*{position}" class="form-control" id="position">
                                     </div>
 
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="branch-div">
@@ -85,21 +85,33 @@
                                         <input type="text" th:field="*{branchIn}" class="form-control" id="branchIn">
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <div class="container-fluid pt-3">
                                             <div class="row">
-                                                <div class="col-5">
+
+                                                <div class="col-3">
+                                                    <label for="numberOfDays" class="form-label">Дни:
+                                                        <select class="form-select-sm" id="numberOfDays" name="day"
+                                                                th:field="*{numberOfDays}">
+                                                            <option
+                                                                    th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}"
+                                                                    th:value="${day}" th:text="${day}"></option>
+                                                        </select>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-3">
                                                     <label for="monthNumber" class="form-label">Месец:
-                                                        <select class="form-select form-select-indicator-color-warning"
+                                                        <select class="form-select-sm form-select-indicator-color-warning"
                                                             id="monthNumber" name="month" th:field="*{monthNumber}">
                                                             <option th:each="month : ${#numbers.sequence(1, 12)}"
                                                                 th:value="${month}" th:text="${month}"></option>
                                                         </select>
                                                     </label>
                                                 </div>
-                                                <div class="col-7">
+                                                <div class="col-6">
                                                     <label for="whatYear" class="form-label">Година:
-                                                        <select class="form-select" id="whatYear" name="year"
+                                                        <select class="form-select-sm" id="whatYear" name="year"
                                                             th:field="*{whatYear}">
                                                             <option th:each="year : ${#numbers.sequence(2024, 2034)}"
                                                                 th:value="${year}" th:text="${year}"></option>
@@ -108,17 +120,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col pt-3">
-                                        <label for="numberOfDays" class="form-label">Дни:
-                                            <select class="form-select" id="numberOfDays" name="day"
-                                                th:field="*{numberOfDays}">
-                                                <option
-                                                    th:each="day : ${#numbers.sequence(new java.math.BigDecimal('1'), new java.math.BigDecimal('31'))}"
-                                                    th:value="${day}" th:text="${day}"></option>
-                                            </select>
-                                        </label>
                                     </div>
 
 
@@ -142,6 +143,14 @@
                                         <div class="invalid-feedback">Моля попълнете.</div>
                                     </div>
 
+                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="number-documents-div">
+                                        <label for="numberDocuments" class="form-label">Бр. Разходни
+                                            Документи:</label>
+                                        <input type="number" th:field="*{numberDocuments}" step="1" min="0" max="100"
+                                               class="form-control" id="numberDocuments" aria-describedby="emailHelp"
+                                               required>
+                                    </div>
+
                                     <div class="col-6 mb-3 box text-bg-secondary p-3" id="head-employer-div">
                                         <label for="headEmployeeName" class="form-label">Име На Ръководител:</label>
                                         <input type="text" th:field="*{headEmployeeName}" class="form-control"
@@ -161,13 +170,6 @@
 <!--                                            aria-describedby="emailHelp" value="0" required>-->
 <!--                                    </div>-->
 
-                                    <div class="col-6 mb-3 box text-bg-secondary p-3" id="number-documents-div">
-                                        <label for="numberDocuments" class="form-label">Бр. Разходни
-                                            Документи:</label>
-                                        <input type="number" th:field="*{numberDocuments}" step="1" min="0" max="100"
-                                            class="form-control" id="numberDocuments" aria-describedby="emailHelp"
-                                            required>
-                                    </div>
                                 </section>
                             </section>
                         </section>
@@ -177,21 +179,25 @@
                             <section class="container pt-2" id="transport-section">
                                 <section class="row" id="vehicle-radio-div">
                                     <h2>Пътуване с Ваше Превозно Средство?</h2>
-                                    <div class="col-2">
-                                        <input type="radio" name="travelRadio" id="isTravel"
-                                            onclick="showHideVehPanelDiv(this), showHideIsTravelOnFirstLastDay(this)"
-                                            th:field="*{isTravelWithYourVehicle}" th:value="true" checked>
-                                        <label for="isTravel">
-                                            <h6>Да</h6>
-                                        </label>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="radio" name="travelRadio" id="isNotTravel"
-                                            onclick="showHideVehPanelDiv(this), showHideIsTravelOnFirstLastDay(this)"
-                                            th:field="*{isTravelWithYourVehicle}" th:value="false">
-                                        <label for="isNotTravel">
-                                            <h6>Не</h6>
-                                        </label>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <input type="radio" name="travelRadio" id="isTravel"
+                                                       onclick="showHideVehPanelDiv(this), showHideIsTravelOnFirstLastDay(this)"
+                                                       th:field="*{isTravelWithYourVehicle}" th:value="true" checked>
+                                                <label for="isTravel">
+                                                    <h6>Да</h6>
+                                                </label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="radio" name="travelRadio" id="isNotTravel"
+                                                       onclick="showHideVehPanelDiv(this), showHideIsTravelOnFirstLastDay(this)"
+                                                       th:field="*{isTravelWithYourVehicle}" th:value="false">
+                                                <label for="isNotTravel">
+                                                    <h6>Не</h6>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
 
@@ -224,21 +230,25 @@
                                     <div class="container">
                                         <div class="row">
                                             <h2 id="daysLabel">С Нощувка?</h2>
-                                            <div class="col-2">
-                                                <input type="radio" th:field="*{isNightStayedInHotel}" th:value="true"
-                                                    value="true" name="nightPanel" id="show-night-panel"
-                                                    onclick="showHideNightStayPanelDiv(this)">
-                                                <label for="show-night-panel">
-                                                    <h6>Да</h6>
-                                                </label>
-                                            </div>
-                                            <div class="col-10">
-                                                <input type="radio" th:field="*{isNightStayedInHotel}" th:value="false"
-                                                    value="false" name="nightPanel" id="show-month-panel"
-                                                    onclick="showHideNightStayPanelDiv(this)" checked>
-                                                <label for="show-month-panel">
-                                                    <h6>Не</h6>
-                                                </label>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <input type="radio" th:field="*{isNightStayedInHotel}" th:value="true"
+                                                               value="true" name="nightPanel" id="show-night-panel"
+                                                               onclick="showHideNightStayPanelDiv(this)">
+                                                        <label for="show-night-panel">
+                                                            <h6>Да</h6>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <input type="radio" th:field="*{isNightStayedInHotel}" th:value="false"
+                                                               value="false" name="nightPanel" id="show-month-panel"
+                                                               onclick="showHideNightStayPanelDiv(this)" checked>
+                                                        <label for="show-month-panel">
+                                                            <h6>Не</h6>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -390,7 +400,7 @@
 
                                         </div>
                                         <div class="col-12" id="month-panel-div">
-                                            <div class="container">
+                                            <div class="container-fluid">
 
                                                 <fieldset class="row" id="month-container">
                                                     <legend>Изберете Дните В Командировка</legend>
